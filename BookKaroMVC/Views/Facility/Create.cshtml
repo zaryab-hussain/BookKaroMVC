@@ -1,0 +1,53 @@
+﻿@model BookKaroMVC.Models.tblFacility
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>tblFacility</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FacilityName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FacilityName)
+                @Html.ValidationMessageFor(model => model.FacilityName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FacilityDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FacilityDescription)
+                @Html.ValidationMessageFor(model => model.FacilityDescription)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FacilityRemarks, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FacilityRemarks)
+                @Html.ValidationMessageFor(model => model.FacilityRemarks)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+               @*@Html.ActionLink("Add", "Create", "Facility", null,new {@class="btn btn-default" })*@
+                 <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

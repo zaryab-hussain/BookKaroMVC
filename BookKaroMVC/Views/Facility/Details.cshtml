@@ -1,0 +1,42 @@
+﻿@model BookKaroMVC.Models.tblFacility
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblFacility</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FacilityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacilityName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FacilityDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacilityDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FacilityRemarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacilityRemarks)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FacilityID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

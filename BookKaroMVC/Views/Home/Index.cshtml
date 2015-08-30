@@ -1,0 +1,137 @@
+﻿
+@model BookKaroMVC.ViewModels.HomeViewModel
+
+@{
+    ViewBag.Title = "Book Karo";
+}
+
+
+
+<link href="@Url.Content("~/Content/Styles/clientslider.css")" rel="stylesheet" />
+<script type="text/javascript" src="@Url.Content("~/Content/Scripts/moment.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Content/Scripts/bootstrap-datetimepicker.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Content/Scripts/jquery.scrollbox.min.js")"></script>
+
+
+@using (Html.BeginForm("Search","Home",FormMethod.Get))
+{
+
+ <!-- begin:header -->
+<div id="header" class="header-slide">
+    <div class="container">
+
+    </div>
+</div>
+<!-- end:header -->
+<!-- begin:service -->
+<div id="service">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="quick-search">
+                    <div class="row">
+
+                        <div class="col-md-6 col-sm-6 ">
+                            <div class="form-group">
+                                <label for="Date">Date</label>
+
+                                <div class="input-group date" id="datetimepicker1">
+                                    
+                                    @Html.TextBox("tbxDatePicker", null, new { @class="form-control", name="tbxDatePicker" })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <asp:label id="Label2" class="formlabels" runat="server">Location</asp:label>
+                                @*@Html.DropDownList("Areas", null, new { @class = "form-control", name="Areas" })*@
+                                @*@Html.DropDownListFor(a=>a.LocationID,ViewBag.Areas as SelectList, "Select Area", new { @class = "form-control", name = "Areas" })*@
+
+                                @Html.DropDownListFor(a=>a.Areas,Model.Areas, "Select an Area", new { @class = "form-control", name = "Areas" })
+                              
+                            </div>
+                        </div>
+                        <!-- break -->
+                        <div class="col-md-6 col-sm-6 ">
+                            <div class="form-group">
+                                <label for="event">Event Type</label>
+                                @*@Html.DropDownList("Categories", null, new { @class = "form-control", name="Categories" })*@
+                                @Html.DropDownListFor(c => c.Events, Model.Events, "Select Category", new { @class = "form-control", name = "Categories" })
+                              
+                            </div>
+                            <div class="form-group">
+                                <asp:label id="Label4" class="formlabels" runat="server">No. of Guests</asp:label>
+
+                                @Html.DropDownList("Guests", null, new { @class = "form-control" , name="Guests"})
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 ">
+                            @Html.ActionLink("Search Karo", "Search", "Home", new { AreaCode = Model.AreaCode, CategoryID = Model.CategoryID }, new { @class = "btn btn-success btn-lg btn-block" })
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end:service -->
+<!-- begin:partner -->
+<div id="partner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-title bg-white">
+                    <h2>Our Premium Partners</h2>
+                </div>
+            </div>
+        </div>
+        <!-- break -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="demo4" class="scroll-img">
+                    <ul>
+                        <li><a href="#" target="_blank"><img src="@Url.Content("~/Content/Images/hanif-rajput-logo.jpg")" /></a></li>
+                        <li><a href="#" target="_blank"><img src="@Url.Content("~/Content/Images/movenpick.jpg")" /></a></li>
+                        <li><a href="#" target="_blank"><img src="@Url.Content("~/Content/Images/marriott-hotels-resorts-suites-logo-primary.jpg")" /></a></li>
+                        <li><a href="#" target="_blank"><img src="@Url.Content("~/Content/Images/Avari-Towers-FL.jpg")" /></a></li>
+                        <li><a href="#" target="_blank"><img src="@Url.Content("~/Content/Images/pec.jpg")" /></a></li>
+                        <li><a href="#" target="_blank"><img src="@Url.Content("~/Content/Images/lasania.jpg")" /></a></li>
+                        <li><a href="#" target="_blank"><img src="@Url.Content("~/Content/Images/mela.jpg")" /></a></li>
+                        <li><a href="#" target="_blank"><img src="@Url.Content("~/Content/Images/pc.jpg")" /></a></li>
+                        <li><a href="#" target="_blank"><img src="@Url.Content("~/Content/Images/marquee.jpg")" /></a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+}
+<!-- end:partner -->
+<script type="text/javascript">
+    $(function ($) {
+        $('#datetimepicker1').datetimepicker()
+    });
+
+    (function ($) {
+        $('#demo4').scrollbox({
+            direction: 'h',
+            switchItems: 4,
+            distance: 670
+        });
+    })(jQuery);
+
+    //$(function ($) {
+
+      
+
+    //});
+</script>

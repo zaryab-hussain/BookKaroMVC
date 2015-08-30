@@ -1,0 +1,185 @@
+﻿@model IEnumerable<BookKaroMVC.ViewModels.SearchResultsViewModel>
+@{
+    ViewBag.Title = "Search";
+}
+
+   <!-- begin:header -->
+<div id="header" class="heading" style="background-image: url(img/img01.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-sm-12">
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end:header -->
+<!-- begin:content -->
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <!-- begin:article -->
+            <div class="col-md-9 col-md-push-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading-title heading-title-alt">
+                            <h3>Plan Your Event</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- begin:sorting -->
+                <div class="row sort">
+                    <div class="col-md-4 col-sm-4 col-xs-3">
+                        <a href="search.html" class="btn btn-success"><i class="fa fa-th"></i></a>
+                        <a href="search_list.html" class="btn btn-default"><i class="fa fa-list"></i></a>
+                        <span>Show <strong>6</strong> of <strong>30</strong> result.</span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-9">
+                        <span>Sort by : </span>
+                        <div class="form-group">
+                            <label class="sr-only" for="sortby">Sort by : </label>
+                            <asp:dropdownlist runat="server" cssclass="form-control">
+                                <asp:listitem>Most Recent</asp:listitem>
+                                <asp:listitem>Price (Low &gt; High)</asp:listitem>
+                                <asp:listitem>Price (High &gt; Low)</asp:listitem>
+                            </asp:dropdownlist>
+
+
+                        </div>
+                        <span>Show : </span>
+                        <div class="form-group">
+                            <label class="sr-only" for="show">Show : </label>
+                            <select class="form-control">
+                                <option>6</option>
+                                <option>10</option>
+                                <option>15</option>
+                                <option>20</option>
+                                <option>25</option>
+                                <option>50</option>
+                                <option>100</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- end:sorting -->
+                <!-- begin:product -->
+                <div class="row container-realestate">
+
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="property-container">
+                                <div class="property-image">
+                                    <img src="img/img02.jpg" alt="mikha real estate theme">
+                                    <div class="property-price">
+                                        <h4>Offices</h4>
+                                        <span>Starting From: @Html.DisplayFor(modelItem => item.PriceRangeMinimum) Per Head</span>
+                                    </div>
+                                    <div class="property-status">
+                                        <span>For Rent</span>
+                                    </div>
+                                </div>
+                                <div class="property-features">
+                                    <span><i class="fa fa-home"></i> @Html.DisplayFor(modelItem => item.CapacityMinimum)</span>
+                                    <span><i class="fa fa-hdd-o"></i> 2 Bed</span>
+                                    <span><i class="fa fa-male"></i> 2 Bath</span>
+                                </div>
+                                <div class="property-content">
+                                    <h3><asp:LinkButton runat="server" ID="lnkbtnOffice" Text=""> </asp:LinkButton> <small>22, JJ Road, Yogyakarta</small></h3>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    }
+
+
+
+
+                    <!-- break -->
+                </div>
+                <!-- end:product -->
+                <!-- begin:pagination -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="pagination">
+                            <li class="disabled"><a href="#">&laquo;</a></li>
+                            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end:pagination -->
+            </div>
+            <!-- end:article -->
+            <!-- begin:sidebar -->
+            <div class="col-md-3 col-md-pull-9 sidebar">
+                <div class="widget widget-sidebar widget-white">
+                    <div class="widget-header">
+                        <h3>Price Range</h3>
+                    </div>
+
+
+                    <asp:Textbox runat="server" ID="amount" ReadOnly="true" style="border:0; color:#912C96; font-weight:bold;"></asp:Textbox>
+                    <div id="slider-range"></div>
+                </div>
+                <!-- break -->
+                <div class="widget widget-sidebar widget-white">
+                    <div class="widget-header">
+                        <h3>Services</h3>
+                    </div>
+                    <ul class="list-check">
+                        <li><a href="#">Place</a>&nbsp;(18)</li>
+                        <li><a href="#">Photography</a>&nbsp;(43)</li>
+                        <li><a href="#">Catering</a>&nbsp;(31)</li>
+                        <li><a href="#">Food</a>&nbsp;(52)</li>
+                        <li><a href="#">Beauty Saloon</a>&nbsp;(8)</li>
+                    </ul>
+                </div>
+                <!-- break -->
+                <div class="widget widget-sidebar widget-white">
+                    <div class="widget-header">
+                        <h3>Location</h3>
+                    </div>
+                    <ul>
+                        <li><a href="#">Gulshan Town</a></li>
+                        <li><a href="#">Defence/Clifton</a></li>
+                        <li><a href="#">Shahra-e-Faisal</a></li>
+                        <li><a href="#">North Nazimabad</a></li>
+                        <li><a href="#">North Karachi</a></li>
+                        <li><a href="#">Kashmir Road</a></li>
+
+
+                    </ul>
+                </div>
+                <!-- break -->
+            </div>
+            <!-- end:sidebar -->
+
+        </div>
+    </div>
+</div>
+<!-- end:content -->
+<script>
+    $(function ($) {
+        $("#slider-range").slider({
+            range: true,
+            min: 1000,
+            max: 500000,
+            values: [1000, 1000],
+            slide: function (event, ui) {
+                $("#BodyContent_amount").val("PKR" + ui.values[0] + " - PKR" + ui.values[1]);
+            }
+        });
+        $("#BodyContent_amount").val("PKR" + $("#slider-range").slider("values", 0) +
+          " - PKR" + $("#slider-range").slider("values", 1));
+    });
+</script>
+

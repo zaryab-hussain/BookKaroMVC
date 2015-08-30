@@ -1,0 +1,1169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BookKaroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblArea">
+          <Key>
+            <PropertyRef Name="AreaCode" />
+          </Key>
+          <Property Name="AreaCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaDescription" Type="varchar" MaxLength="50" />
+          <Property Name="AreaCategory" Type="varchar" MaxLength="50" />
+          <Property Name="AreaEnteredOn" Type="varchar" MaxLength="50" />
+          <Property Name="AreaEnteredBy" Type="varchar" MaxLength="50" />
+          <Property Name="AreaUpdatedOn" Type="varchar" MaxLength="50" />
+          <Property Name="AreaUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblBooking">
+          <Key>
+            <PropertyRef Name="BookingID" />
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="BookingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblBookingItem">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingDescription" Type="varchar" MaxLength="50" />
+          <Property Name="BookingDate" Type="varchar" MaxLength="50" />
+          <Property Name="BookingTime" Type="varchar" MaxLength="50" />
+          <Property Name="BookingType" Type="varchar" MaxLength="50" />
+          <Property Name="BookingStatus" Type="varchar" MaxLength="50" />
+          <Property Name="VendorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CategoryDescription" Type="varchar" MaxLength="250" />
+          <Property Name="CategoryRemarks" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CityDescription" Type="varchar" MaxLength="500" />
+          <Property Name="CityRemarks" Type="varchar" MaxLength="500" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCountry">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryDescription" Type="varchar" MaxLength="250" />
+          <Property Name="CountyRemarks" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerAddress1" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerAddress2" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerCity" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerCategory" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerLandLine" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerCountry" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerMobilePrimary" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerMobileSecondary" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerCNIC" Type="varchar" MaxLength="50" />
+          <Property Name="AreaCode" Type="int" Nullable="false" />
+          <Property Name="CustomerEnteredOn" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerEnteredBy" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerUpdatedOn" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerUserPassword" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerUserType" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerUserStatus" Type="varchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblFacility">
+          <Key>
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Name="FacilityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FacilityName" Type="varchar" MaxLength="50" />
+          <Property Name="FacilityDescription" Type="varchar" MaxLength="50" />
+          <Property Name="FacilityRemarks" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblImage">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageDesc" Type="varchar" MaxLength="250" />
+          <Property Name="ImageDetail" Type="varchar" MaxLength="250" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="1000" />
+          <Property Name="VendorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMembership">
+          <Key>
+            <PropertyRef Name="MembershipID" />
+          </Key>
+          <Property Name="MembershipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MembershipCategory" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" />
+          <Property Name="RoleDescription" Type="varchar" MaxLength="50" />
+          <Property Name="RoleRemarks" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="UserFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="UserLastName" Type="varchar" MaxLength="50" />
+          <Property Name="UserDisplayName" Type="varchar" MaxLength="50" />
+          <Property Name="UsePassword" Type="varchar" MaxLength="50" />
+          <Property Name="UseLast_Login" Type="datetime" />
+          <Property Name="UserRegistration" Type="datetime" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" />
+          <Property Name="UserPreviousPasswordDate" Type="varchar" MaxLength="50" />
+          <Property Name="UserLoginDate" Type="datetime" />
+          <Property Name="UserAddress" Type="varchar" MaxLength="500" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BookKaro.dbo.tblUserRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblVendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorName" Type="varchar" MaxLength="50" />
+          <Property Name="VendorPriceRangeMinimum" Type="varchar" MaxLength="50" />
+          <Property Name="VendorCapacityMinimum" Type="varchar" MaxLength="50" />
+          <Property Name="VendorEnteredOn" Type="varchar" MaxLength="50" />
+          <Property Name="VendorEnteredBy" Type="varchar" MaxLength="50" />
+          <Property Name="VendorUpdatedOn" Type="varchar" MaxLength="50" />
+          <Property Name="VendorUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="VendorPriceRangeMaximum" Type="varchar" MaxLength="50" />
+          <Property Name="MembershipID" Type="int" Nullable="false" />
+          <Property Name="VendorAddress" Type="varchar" MaxLength="50" />
+          <Property Name="VendorCapacityMaximum" Type="varchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="AreaCode" Type="int" Nullable="false" />
+          <Property Name="FacilityID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblVendorCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="VendorID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Booking_BookingItem">
+          <End Role="tblBookingItem" Type="Self.tblBookingItem" Multiplicity="1" />
+          <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBookingItem">
+              <PropertyRef Name="BookingID" />
+            </Principal>
+            <Dependent Role="tblBooking">
+              <PropertyRef Name="BookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_Customer">
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+          <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="tblBooking">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblArea_tblCity">
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="1" />
+          <End Role="tblArea" Type="Self.tblArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="tblArea">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBookingItem_tblVendor">
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="1" />
+          <End Role="tblBookingItem" Type="Self.tblBookingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="tblBookingItem">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCity_tblCountry">
+          <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="1" />
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="tblCity">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomer_tblArea">
+          <End Role="tblArea" Type="Self.tblArea" Multiplicity="1" />
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArea">
+              <PropertyRef Name="AreaCode" />
+            </Principal>
+            <Dependent Role="tblCustomer">
+              <PropertyRef Name="AreaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomer_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblCustomer">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblImage_tblImage">
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="1" />
+          <End Role="tblImage" Type="Self.tblImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="tblImage">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRole_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="1" />
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="tblUserRole">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRole_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblUserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendor_tblArea">
+          <End Role="tblArea" Type="Self.tblArea" Multiplicity="1" />
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArea">
+              <PropertyRef Name="AreaCode" />
+            </Principal>
+            <Dependent Role="tblVendor">
+              <PropertyRef Name="AreaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendor_tblCategory">
+          <End Role="tblCategory" Type="Self.tblCategory" Multiplicity="1" />
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategory">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="tblVendor">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendor_tblFacility">
+          <End Role="tblFacility" Type="Self.tblFacility" Multiplicity="1" />
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFacility">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="tblVendor">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendor_tblMembership">
+          <End Role="tblMembership" Type="Self.tblMembership" Multiplicity="1" />
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembership">
+              <PropertyRef Name="MembershipID" />
+            </Principal>
+            <Dependent Role="tblVendor">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendor_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblVendor">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendorCategory_tblVendor">
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="1" />
+          <End Role="tblVendorCategory" Type="Self.tblVendorCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="tblVendorCategory">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendorCategory_tblVendorCategory">
+          <End Role="tblCategory" Type="Self.tblCategory" Multiplicity="1" />
+          <End Role="tblVendorCategory" Type="Self.tblVendorCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategory">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="tblVendorCategory">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BookKaroModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblArea" EntityType="Self.tblArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBooking" EntityType="Self.tblBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBookingItem" EntityType="Self.tblBookingItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCity" EntityType="Self.tblCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCountry" EntityType="Self.tblCountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFacility" EntityType="Self.tblFacility" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblImage" EntityType="Self.tblImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMembership" EntityType="Self.tblMembership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVendor" EntityType="Self.tblVendor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblUserRole].[UserID] AS [UserID], 
+    [tblUserRole].[RoleID] AS [RoleID]
+    FROM [dbo].[tblUserRole] AS [tblUserRole]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblVendorCategory" EntityType="Self.tblVendorCategory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblVendorCategory].[CategoryID] AS [CategoryID], 
+    [tblVendorCategory].[VendorID] AS [VendorID]
+    FROM [dbo].[tblVendorCategory] AS [tblVendorCategory]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Booking_BookingItem" Association="Self.FK_Booking_BookingItem">
+            <End Role="tblBookingItem" EntitySet="tblBookingItem" />
+            <End Role="tblBooking" EntitySet="tblBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_Customer" Association="Self.FK_Booking_Customer">
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+            <End Role="tblBooking" EntitySet="tblBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblArea_tblCity" Association="Self.FK_tblArea_tblCity">
+            <End Role="tblCity" EntitySet="tblCity" />
+            <End Role="tblArea" EntitySet="tblArea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBookingItem_tblVendor" Association="Self.FK_tblBookingItem_tblVendor">
+            <End Role="tblVendor" EntitySet="tblVendor" />
+            <End Role="tblBookingItem" EntitySet="tblBookingItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCity_tblCountry" Association="Self.FK_tblCity_tblCountry">
+            <End Role="tblCountry" EntitySet="tblCountry" />
+            <End Role="tblCity" EntitySet="tblCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomer_tblArea" Association="Self.FK_tblCustomer_tblArea">
+            <End Role="tblArea" EntitySet="tblArea" />
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomer_tblUser" Association="Self.FK_tblCustomer_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblImage_tblImage" Association="Self.FK_tblImage_tblImage">
+            <End Role="tblVendor" EntitySet="tblVendor" />
+            <End Role="tblImage" EntitySet="tblImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblRole" Association="Self.FK_tblUser_tblRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRole_tblRole" Association="Self.FK_tblUserRole_tblRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblUserRole" EntitySet="tblUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRole_tblUser" Association="Self.FK_tblUserRole_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserRole" EntitySet="tblUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendor_tblArea" Association="Self.FK_tblVendor_tblArea">
+            <End Role="tblArea" EntitySet="tblArea" />
+            <End Role="tblVendor" EntitySet="tblVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendor_tblCategory" Association="Self.FK_tblVendor_tblCategory">
+            <End Role="tblCategory" EntitySet="tblCategory" />
+            <End Role="tblVendor" EntitySet="tblVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendor_tblFacility" Association="Self.FK_tblVendor_tblFacility">
+            <End Role="tblFacility" EntitySet="tblFacility" />
+            <End Role="tblVendor" EntitySet="tblVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendor_tblMembership" Association="Self.FK_tblVendor_tblMembership">
+            <End Role="tblMembership" EntitySet="tblMembership" />
+            <End Role="tblVendor" EntitySet="tblVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendor_tblUser" Association="Self.FK_tblVendor_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblVendor" EntitySet="tblVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendorCategory_tblVendor" Association="Self.FK_tblVendorCategory_tblVendor">
+            <End Role="tblVendor" EntitySet="tblVendor" />
+            <End Role="tblVendorCategory" EntitySet="tblVendorCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendorCategory_tblVendorCategory" Association="Self.FK_tblVendorCategory_tblVendorCategory">
+            <End Role="tblCategory" EntitySet="tblCategory" />
+            <End Role="tblVendorCategory" EntitySet="tblVendorCategory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BookKaroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblArea">
+          <Key>
+            <PropertyRef Name="AreaCode" />
+          </Key>
+          <Property Name="AreaCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaEnteredOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaEnteredBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaUpdatedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCity" Relationship="Self.FK_tblArea_tblCity" FromRole="tblArea" ToRole="tblCity" />
+          <NavigationProperty Name="tblCustomers" Relationship="Self.FK_tblCustomer_tblArea" FromRole="tblArea" ToRole="tblCustomer" />
+          <NavigationProperty Name="tblVendors" Relationship="Self.FK_tblVendor_tblArea" FromRole="tblArea" ToRole="tblVendor" />
+        </EntityType>
+        <EntityType Name="tblBookingItem">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookingDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookingTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookingStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblVendor" Relationship="Self.FK_tblBookingItem_tblVendor" FromRole="tblBookingItem" ToRole="tblVendor" />
+          <NavigationProperty Name="tblCustomers" Relationship="Self.tblBooking" FromRole="tblBookingItem" ToRole="tblCustomer" />
+        </EntityType>
+        <EntityType Name="tblCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategoryDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblVendors" Relationship="Self.tblVendorCategory" FromRole="tblCategory" ToRole="tblVendor" />
+          <NavigationProperty Name="tblVendors1" Relationship="BookKaroModel.FK_tblVendor_tblCategory" FromRole="tblCategory" ToRole="tblVendor" />
+        </EntityType>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CityDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CityRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAreas" Relationship="Self.FK_tblArea_tblCity" FromRole="tblCity" ToRole="tblArea" />
+          <NavigationProperty Name="tblCountry" Relationship="Self.FK_tblCity_tblCountry" FromRole="tblCity" ToRole="tblCountry" />
+        </EntityType>
+        <EntityType Name="tblCountry">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CountyRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCities" Relationship="Self.FK_tblCity_tblCountry" FromRole="tblCountry" ToRole="tblCity" />
+        </EntityType>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerAddress1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerLandLine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerMobilePrimary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerMobileSecondary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerCNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaCode" Type="Int32" Nullable="false" />
+          <Property Name="CustomerEnteredOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerEnteredBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerUpdatedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerUserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerUserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerUserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="tblArea" Relationship="Self.FK_tblCustomer_tblArea" FromRole="tblCustomer" ToRole="tblArea" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblCustomer_tblUser" FromRole="tblCustomer" ToRole="tblUser" />
+          <NavigationProperty Name="tblBookingItems" Relationship="Self.tblBooking" FromRole="tblCustomer" ToRole="tblBookingItem" />
+        </EntityType>
+        <EntityType Name="tblFacility">
+          <Key>
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Name="FacilityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FacilityDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FacilityRemarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblVendors" Relationship="Self.FK_tblVendor_tblFacility" FromRole="tblFacility" ToRole="tblVendor" />
+        </EntityType>
+        <EntityType Name="tblImage">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageDesc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ImageDetail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblVendor" Relationship="Self.FK_tblImage_tblImage" FromRole="tblImage" ToRole="tblVendor" />
+        </EntityType>
+        <EntityType Name="tblMembership">
+          <Key>
+            <PropertyRef Name="MembershipID" />
+          </Key>
+          <Property Name="MembershipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblVendors" Relationship="Self.FK_tblVendor_tblMembership" FromRole="tblMembership" ToRole="tblVendor" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleRemarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblUsers" Relationship="Self.tblUserRole" FromRole="tblRole" ToRole="tblUser" />
+          <NavigationProperty Name="tblUsers1" Relationship="BookKaroModel.FK_tblUser_tblRole" FromRole="tblRole" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserDisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UsePassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UseLast_Login" Type="DateTime" Precision="3" />
+          <Property Name="UserRegistration" Type="DateTime" Precision="3" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserPreviousPasswordDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserLoginDate" Type="DateTime" Precision="3" />
+          <Property Name="UserAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCustomers" Relationship="Self.FK_tblCustomer_tblUser" FromRole="tblUser" ToRole="tblCustomer" />
+          <NavigationProperty Name="tblVendors" Relationship="Self.FK_tblVendor_tblUser" FromRole="tblUser" ToRole="tblVendor" />
+          <NavigationProperty Name="tblRoles" Relationship="Self.tblUserRole" FromRole="tblUser" ToRole="tblRole" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblRole" Relationship="BookKaroModel.FK_tblUser_tblRole" FromRole="tblUser" ToRole="tblRole" />
+        </EntityType>
+        <EntityType Name="tblVendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorPriceRangeMinimum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorCapacityMinimum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorEnteredOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorEnteredBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorUpdatedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorPriceRangeMaximum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MembershipID" Type="Int32" Nullable="false" />
+          <Property Name="VendorAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorCapacityMaximum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="AreaCode" Type="Int32" Nullable="false" />
+          <Property Name="FacilityID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblArea" Relationship="Self.FK_tblVendor_tblArea" FromRole="tblVendor" ToRole="tblArea" />
+          <NavigationProperty Name="tblBookingItems" Relationship="Self.FK_tblBookingItem_tblVendor" FromRole="tblVendor" ToRole="tblBookingItem" />
+          <NavigationProperty Name="tblFacility" Relationship="Self.FK_tblVendor_tblFacility" FromRole="tblVendor" ToRole="tblFacility" />
+          <NavigationProperty Name="tblImages" Relationship="Self.FK_tblImage_tblImage" FromRole="tblVendor" ToRole="tblImage" />
+          <NavigationProperty Name="tblMembership" Relationship="Self.FK_tblVendor_tblMembership" FromRole="tblVendor" ToRole="tblMembership" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblVendor_tblUser" FromRole="tblVendor" ToRole="tblUser" />
+          <NavigationProperty Name="tblCategories" Relationship="Self.tblVendorCategory" FromRole="tblVendor" ToRole="tblCategory" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCategory" Relationship="BookKaroModel.FK_tblVendor_tblCategory" FromRole="tblVendor" ToRole="tblCategory" />
+        </EntityType>
+        <Association Name="FK_tblArea_tblCity">
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="1" />
+          <End Role="tblArea" Type="Self.tblArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="tblArea">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomer_tblArea">
+          <End Role="tblArea" Type="Self.tblArea" Multiplicity="1" />
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArea">
+              <PropertyRef Name="AreaCode" />
+            </Principal>
+            <Dependent Role="tblCustomer">
+              <PropertyRef Name="AreaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendor_tblArea">
+          <End Role="tblArea" Type="Self.tblArea" Multiplicity="1" />
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArea">
+              <PropertyRef Name="AreaCode" />
+            </Principal>
+            <Dependent Role="tblVendor">
+              <PropertyRef Name="AreaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBookingItem_tblVendor">
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="1" />
+          <End Role="tblBookingItem" Type="Self.tblBookingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="tblBookingItem">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCity_tblCountry">
+          <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="1" />
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="tblCity">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomer_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblCustomer">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendor_tblFacility">
+          <End Role="tblFacility" Type="Self.tblFacility" Multiplicity="1" />
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFacility">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="tblVendor">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblImage_tblImage">
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="1" />
+          <End Role="tblImage" Type="Self.tblImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="tblImage">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendor_tblMembership">
+          <End Role="tblMembership" Type="Self.tblMembership" Multiplicity="1" />
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembership">
+              <PropertyRef Name="MembershipID" />
+            </Principal>
+            <Dependent Role="tblVendor">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendor_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblVendor">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblBooking">
+          <End Role="tblBookingItem" Type="Self.tblBookingItem" Multiplicity="*" />
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="*" />
+        </Association>
+        <Association Name="tblUserRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="*" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+        </Association>
+        <Association Name="tblVendorCategory">
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
+          <End Role="tblCategory" Type="Self.tblCategory" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BookKaroEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tblAreas" EntityType="Self.tblArea" />
+          <EntitySet Name="tblBookingItems" EntityType="Self.tblBookingItem" />
+          <EntitySet Name="tblCategories" EntityType="Self.tblCategory" />
+          <EntitySet Name="tblCities" EntityType="Self.tblCity" />
+          <EntitySet Name="tblCountries" EntityType="Self.tblCountry" />
+          <EntitySet Name="tblCustomers" EntityType="Self.tblCustomer" />
+          <EntitySet Name="tblFacilities" EntityType="Self.tblFacility" />
+          <EntitySet Name="tblImages" EntityType="Self.tblImage" />
+          <EntitySet Name="tblMemberships" EntityType="Self.tblMembership" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="tblVendors" EntityType="Self.tblVendor" />
+          <AssociationSet Name="FK_tblArea_tblCity" Association="Self.FK_tblArea_tblCity">
+            <End Role="tblCity" EntitySet="tblCities" />
+            <End Role="tblArea" EntitySet="tblAreas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomer_tblArea" Association="Self.FK_tblCustomer_tblArea">
+            <End Role="tblArea" EntitySet="tblAreas" />
+            <End Role="tblCustomer" EntitySet="tblCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendor_tblArea" Association="Self.FK_tblVendor_tblArea">
+            <End Role="tblArea" EntitySet="tblAreas" />
+            <End Role="tblVendor" EntitySet="tblVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBookingItem_tblVendor" Association="Self.FK_tblBookingItem_tblVendor">
+            <End Role="tblVendor" EntitySet="tblVendors" />
+            <End Role="tblBookingItem" EntitySet="tblBookingItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCity_tblCountry" Association="Self.FK_tblCity_tblCountry">
+            <End Role="tblCountry" EntitySet="tblCountries" />
+            <End Role="tblCity" EntitySet="tblCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomer_tblUser" Association="Self.FK_tblCustomer_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblCustomer" EntitySet="tblCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendor_tblFacility" Association="Self.FK_tblVendor_tblFacility">
+            <End Role="tblFacility" EntitySet="tblFacilities" />
+            <End Role="tblVendor" EntitySet="tblVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblImage_tblImage" Association="Self.FK_tblImage_tblImage">
+            <End Role="tblVendor" EntitySet="tblVendors" />
+            <End Role="tblImage" EntitySet="tblImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendor_tblMembership" Association="Self.FK_tblVendor_tblMembership">
+            <End Role="tblMembership" EntitySet="tblMemberships" />
+            <End Role="tblVendor" EntitySet="tblVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendor_tblUser" Association="Self.FK_tblVendor_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblVendor" EntitySet="tblVendors" />
+          </AssociationSet>
+          <AssociationSet Name="tblBooking" Association="Self.tblBooking">
+            <End Role="tblBookingItem" EntitySet="tblBookingItems" />
+            <End Role="tblCustomer" EntitySet="tblCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="tblUserRole" Association="Self.tblUserRole">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblUser" EntitySet="tblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="tblVendorCategory" Association="Self.tblVendorCategory">
+            <End Role="tblVendor" EntitySet="tblVendors" />
+            <End Role="tblCategory" EntitySet="tblCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendor_tblCategory" Association="BookKaroModel.FK_tblVendor_tblCategory">
+            <End Role="tblCategory" EntitySet="tblCategories" />
+            <End Role="tblVendor" EntitySet="tblVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblRole" Association="BookKaroModel.FK_tblUser_tblRole">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblUser" EntitySet="tblUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_tblVendor_tblCategory">
+          <End Type="BookKaroModel.tblCategory" Role="tblCategory" Multiplicity="1" />
+          <End Type="BookKaroModel.tblVendor" Role="tblVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategory">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="tblVendor">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblRole">
+          <End Type="BookKaroModel.tblRole" Role="tblRole" Multiplicity="1" />
+          <End Type="BookKaroModel.tblUser" Role="tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BookKaroModelStoreContainer" CdmEntityContainer="BookKaroEntities1">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BookKaroModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAreas">
+            <EntityTypeMapping TypeName="BookKaroModel.tblArea">
+              <MappingFragment StoreEntitySet="tblArea">
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="AreaDescription" ColumnName="AreaDescription" />
+                <ScalarProperty Name="AreaCategory" ColumnName="AreaCategory" />
+                <ScalarProperty Name="AreaEnteredOn" ColumnName="AreaEnteredOn" />
+                <ScalarProperty Name="AreaEnteredBy" ColumnName="AreaEnteredBy" />
+                <ScalarProperty Name="AreaUpdatedOn" ColumnName="AreaUpdatedOn" />
+                <ScalarProperty Name="AreaUpdatedBy" ColumnName="AreaUpdatedBy" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBookingItems">
+            <EntityTypeMapping TypeName="BookKaroModel.tblBookingItem">
+              <MappingFragment StoreEntitySet="tblBookingItem">
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+                <ScalarProperty Name="BookingDescription" ColumnName="BookingDescription" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="BookingTime" ColumnName="BookingTime" />
+                <ScalarProperty Name="BookingType" ColumnName="BookingType" />
+                <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCategories">
+            <EntityTypeMapping TypeName="BookKaroModel.tblCategory">
+              <MappingFragment StoreEntitySet="tblCategory">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+                <ScalarProperty Name="CategoryRemarks" ColumnName="CategoryRemarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCities">
+            <EntityTypeMapping TypeName="BookKaroModel.tblCity">
+              <MappingFragment StoreEntitySet="tblCity">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityDescription" ColumnName="CityDescription" />
+                <ScalarProperty Name="CityRemarks" ColumnName="CityRemarks" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCountries">
+            <EntityTypeMapping TypeName="BookKaroModel.tblCountry">
+              <MappingFragment StoreEntitySet="tblCountry">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryDescription" ColumnName="CountryDescription" />
+                <ScalarProperty Name="CountyRemarks" ColumnName="CountyRemarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomers">
+            <EntityTypeMapping TypeName="BookKaroModel.tblCustomer">
+              <MappingFragment StoreEntitySet="tblCustomer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
+                <ScalarProperty Name="CustomerAddress2" ColumnName="CustomerAddress2" />
+                <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
+                <ScalarProperty Name="CustomerCategory" ColumnName="CustomerCategory" />
+                <ScalarProperty Name="CustomerLandLine" ColumnName="CustomerLandLine" />
+                <ScalarProperty Name="CustomerCountry" ColumnName="CustomerCountry" />
+                <ScalarProperty Name="CustomerMobilePrimary" ColumnName="CustomerMobilePrimary" />
+                <ScalarProperty Name="CustomerMobileSecondary" ColumnName="CustomerMobileSecondary" />
+                <ScalarProperty Name="CustomerCNIC" ColumnName="CustomerCNIC" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="CustomerEnteredOn" ColumnName="CustomerEnteredOn" />
+                <ScalarProperty Name="CustomerEnteredBy" ColumnName="CustomerEnteredBy" />
+                <ScalarProperty Name="CustomerUpdatedOn" ColumnName="CustomerUpdatedOn" />
+                <ScalarProperty Name="CustomerUpdatedBy" ColumnName="CustomerUpdatedBy" />
+                <ScalarProperty Name="CustomerUserPassword" ColumnName="CustomerUserPassword" />
+                <ScalarProperty Name="CustomerUserType" ColumnName="CustomerUserType" />
+                <ScalarProperty Name="CustomerUserStatus" ColumnName="CustomerUserStatus" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFacilities">
+            <EntityTypeMapping TypeName="BookKaroModel.tblFacility">
+              <MappingFragment StoreEntitySet="tblFacility">
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="FacilityDescription" ColumnName="FacilityDescription" />
+                <ScalarProperty Name="FacilityRemarks" ColumnName="FacilityRemarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblImages">
+            <EntityTypeMapping TypeName="BookKaroModel.tblImage">
+              <MappingFragment StoreEntitySet="tblImage">
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="ImageDesc" ColumnName="ImageDesc" />
+                <ScalarProperty Name="ImageDetail" ColumnName="ImageDetail" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMemberships">
+            <EntityTypeMapping TypeName="BookKaroModel.tblMembership">
+              <MappingFragment StoreEntitySet="tblMembership">
+                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+                <ScalarProperty Name="MembershipCategory" ColumnName="MembershipCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="BookKaroModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRole">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+                <ScalarProperty Name="RoleRemarks" ColumnName="RoleRemarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="BookKaroModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
+                <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
+                <ScalarProperty Name="UserDisplayName" ColumnName="UserDisplayName" />
+                <ScalarProperty Name="UsePassword" ColumnName="UsePassword" />
+                <ScalarProperty Name="UseLast_Login" ColumnName="UseLast_Login" />
+                <ScalarProperty Name="UserRegistration" ColumnName="UserRegistration" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserPreviousPasswordDate" ColumnName="UserPreviousPasswordDate" />
+                <ScalarProperty Name="UserLoginDate" ColumnName="UserLoginDate" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVendors">
+            <EntityTypeMapping TypeName="BookKaroModel.tblVendor">
+              <MappingFragment StoreEntitySet="tblVendor">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="VendorPriceRangeMinimum" ColumnName="VendorPriceRangeMinimum" />
+                <ScalarProperty Name="VendorCapacityMinimum" ColumnName="VendorCapacityMinimum" />
+                <ScalarProperty Name="VendorEnteredOn" ColumnName="VendorEnteredOn" />
+                <ScalarProperty Name="VendorEnteredBy" ColumnName="VendorEnteredBy" />
+                <ScalarProperty Name="VendorUpdatedOn" ColumnName="VendorUpdatedOn" />
+                <ScalarProperty Name="VendorUpdatedBy" ColumnName="VendorUpdatedBy" />
+                <ScalarProperty Name="VendorPriceRangeMaximum" ColumnName="VendorPriceRangeMaximum" />
+                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+                <ScalarProperty Name="VendorAddress" ColumnName="VendorAddress" />
+                <ScalarProperty Name="VendorCapacityMaximum" ColumnName="VendorCapacityMaximum" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tblBooking" TypeName="BookKaroModel.tblBooking" StoreEntitySet="tblBooking">
+            <EndProperty Name="tblBookingItem">
+              <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+            </EndProperty>
+            <EndProperty Name="tblCustomer">
+              <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tblUserRole" TypeName="BookKaroModel.tblUserRole" StoreEntitySet="tblUserRole">
+            <EndProperty Name="tblRole">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+            <EndProperty Name="tblUser">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tblVendorCategory" TypeName="BookKaroModel.tblVendorCategory" StoreEntitySet="tblVendorCategory">
+            <EndProperty Name="tblVendor">
+              <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+            </EndProperty>
+            <EndProperty Name="tblCategory">
+              <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
