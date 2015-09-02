@@ -73,10 +73,10 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="property-container">
                                 <div class="property-image">
-                                    <img src="img/img02.jpg" alt="mikha real estate theme">
+                                    <img src="@Url.Content("~/Content/Images/" + item.ImageSource)" alt="mikha real estate theme">
                                     <div class="property-price">
-                                        <h4>Offices</h4>
-                                        <span>Starting From: @Html.DisplayFor(modelItem => item.PriceRangeMinimum) Per Head</span>
+                                        <h4>@Html.DisplayFor(modelItem => item.CategoryName)</h4>
+                                        <span class="price">Starting From: @Html.DisplayFor(modelItem => item.PriceRangeMinimum) Per Head</span>
                                     </div>
                                     <div class="property-status">
                                         <span>For Rent</span>

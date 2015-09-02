@@ -16,6 +16,7 @@ namespace BookKaroMVC.ViewModels
         public string AreaName { get; set; }
 
         public string CapacityMinimum { get; set; }
+        public string ImageSource { get; set; }
 
     }
 }

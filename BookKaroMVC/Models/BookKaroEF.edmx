@@ -184,6 +184,8 @@ warning 6002: The table/view 'BookKaro.dbo.tblUserRole' does not have a primary 
           <Property Name="AreaCode" Type="int" Nullable="false" />
           <Property Name="FacilityID" Type="int" Nullable="false" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="VendorImageSource" Type="varchar(max)" />
+          <Property Name="VendorDescription" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -706,6 +708,8 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <NavigationProperty Name="tblCategories" Relationship="Self.tblVendorCategory" FromRole="tblVendor" ToRole="tblCategory" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblCategory" Relationship="BookKaroModel.FK_tblVendor_tblCategory" FromRole="tblVendor" ToRole="tblCategory" />
+          <Property Name="VendorImageSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VendorDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_tblArea_tblCity">
           <End Role="tblCity" Type="Self.tblCity" Multiplicity="1" />
@@ -1100,6 +1104,8 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <EntitySetMapping Name="tblVendors">
             <EntityTypeMapping TypeName="BookKaroModel.tblVendor">
               <MappingFragment StoreEntitySet="tblVendor">
+                <ScalarProperty Name="VendorDescription" ColumnName="VendorDescription" />
+                <ScalarProperty Name="VendorImageSource" ColumnName="VendorImageSource" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="VendorID" ColumnName="VendorID" />
                 <ScalarProperty Name="VendorName" ColumnName="VendorName" />

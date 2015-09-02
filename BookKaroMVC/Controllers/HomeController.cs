@@ -146,26 +146,6 @@ namespace BookKaroMVC.Controllers
         //}
 
 
-        [HttpGet]
-        public ActionResult Search()
-        {
-            //var SearchCriteria = new HomeViewModel();
-            //SearchCriteria.LocationID = ;
-
-
-            int? eventType;
-          
-            //var SearchResults = (from v in db.tblVendors
-            //                    join c in db.tblCategories on v.CategoryID equals c.CategoryID
-            //                    join a in db.tblAreas on v.AreaCode equals a.AreaCode
-
-            //                    where a.AreaCode == area && c.CategoryID == eventType
-            //                     select new SearchResultsViewModel() {CategoryName = c.CategoryName,VendorName= v.VendorName,PriceRangeMinimum = v.VendorPriceRangeMinimum,AreaName= a.AreaDescription, CapacityMinimum = v.VendorCapacityMinimum });
-
-            //SearchResults
-
-
-            return View();
-        }
+       
     }
 }

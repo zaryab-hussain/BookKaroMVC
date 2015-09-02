@@ -37,6 +37,8 @@ namespace BookKaroMVC.Models
         public int AreaCode { get; set; }
         public int FacilityID { get; set; }
         public int CategoryID { get; set; }
+        public string VendorImageSource { get; set; }
+        public string VendorDescription { get; set; }
     
         public virtual tblArea tblArea { get; set; }
         public virtual ICollection<tblBookingItem> tblBookingItems { get; set; }

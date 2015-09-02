@@ -99,6 +99,64 @@ namespace BookKaroMVC.Controllers
             }
         }
 
-       
+        [HttpGet]
+        public ActionResult Search(int Areas, int Guests, int Events, DateTime tbxDatePicker)
+        {
+            //var SearchCriteria = new HomeViewModel();
+            //SearchCriteria.LocationID = ;
+
+
+            int? eventType;
+
+            var SearchResults = (from v in db.tblVendors
+                                 join c in db.tblCategories on v.CategoryID equals c.CategoryID
+                                 join a in db.tblAreas on v.AreaCode equals a.AreaCode
+                                 where a.AreaCode == Areas && c.CategoryID == Events
+                                 select new SearchResultsViewModel() { CategoryName = c.CategoryName, VendorName = v.VendorName, PriceRangeMinimum = v.VendorPriceRangeMinimum, AreaName = a.AreaDescription, CapacityMinimum = v.VendorCapacityMinimum, ImageSource = v.VendorImageSource });
+
+            //SearchResults
+
+
+            return View(SearchResults);
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Detail(int VendorCode)
+        
+        {
+            //var SearchCriteria = new HomeViewModel();
+            //SearchCriteria.LocationID = ;
+
+
+            var objVendorDetail = new VendorDetailViewModel();
+
+            objVendorDetail = (from v in db.tblVendors
+                                 join c in db.tblCategories on v.CategoryID equals c.CategoryID
+                                 join a in db.tblAreas on v.AreaCode equals a.AreaCode
+                                 join f in db.tblFacilities on v.FacilityID equals f.FacilityID
+                                 where v.VendorID == VendorCode
+                                 select new VendorDetailViewModel() 
+                                 { Category = c.CategoryName,
+                                   VendorName = v.VendorName,
+                                   VendorPriceRangeMinimum = v.VendorPriceRangeMinimum,
+                                   VendorPriceRangeMaximum = v.VendorPriceRangeMaximum,
+                                   VendorCapacityMinimum = v.VendorCapacityMinimum,
+                                   VendorCapacityMaximum = v.VendorCapacityMaximum,
+                                   VendorDescription = v.VendorDescription,
+                                   Area = a.AreaDescription,
+                                   Facility = f.FacilityName,
+                                   VendorAddress = v.VendorAddress,
+                                   VendorImageSource = v.VendorImageSource
+                                   
+                                  
+                                   
+                                 }).SingleOrDefault();
+
+
+
+            return View(objVendorDetail);
+        }
     }
 }

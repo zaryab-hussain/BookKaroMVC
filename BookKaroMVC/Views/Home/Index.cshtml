@@ -70,8 +70,8 @@
                         </div>
 
                         <div class="col-md-12 col-sm-12 ">
-                            @Html.ActionLink("Search Karo", "Search", "Home", new { AreaCode = Model.AreaCode, CategoryID = Model.CategoryID }, new { @class = "btn btn-success btn-lg btn-block" })
-                            
+                            @*@Html.ActionLink("Search Karo", "Search", "Vendor", new { AreaCode = Areas}, new { @class = "btn btn-success btn-lg btn-block" })*@
+                            <input type="submit" value="Search" class="btn btn-success btn-lg btn-block" id="Submit" />
                         </div>
 
                     </div>
@@ -131,7 +131,23 @@
 
     //$(function ($) {
 
-      
+    //$('#Submit').click(function () {
+
+
+    //    var url = '/Vendor/Search/';
+    //    var AreaCode = $('#Areas').val();
+    //    var Events = $('#Events').val();
+       
+    //    //$.post(url, { AreaCode: AreaCode }, function (data) {
+    //    $.post(url, {},function () {
+    //        //alert('test');
+    //        //$('#itemsList').html(data);
+
+    //    })
+       
+
+    //});
+
 
     //});
 </script>
