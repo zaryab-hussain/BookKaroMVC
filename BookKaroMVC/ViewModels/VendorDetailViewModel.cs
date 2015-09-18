@@ -18,12 +18,16 @@ namespace BookKaroMVC.ViewModels
        public string Area { get; set; }
         public string Category { get; set; }
    
-        public string VendorImageSource { get; set; }
+        public List<string> VendorImageSource { get; set; }
 
-        public string Facility { get; set; }
+        public List<string> Facility { get; set; }
 
         public string VendorDescription { get; set; }
         public string VendorCity { get; set; }
         public string VendorCountry { get; set; }
+
+        //public string VendorMainImage1 { get; set; }
+        //public string VendorMainImage2 { get; set; }
+        //public string VendorMainImage3 { get; set; }
     }
 }

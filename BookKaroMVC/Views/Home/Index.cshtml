@@ -13,7 +13,7 @@
 <script type="text/javascript" src="@Url.Content("~/Content/Scripts/jquery.scrollbox.min.js")"></script>
 
 
-@using (Html.BeginForm("Search","Home",FormMethod.Get))
+@using (Html.BeginForm("Search", "Location", FormMethod.Get))
 {
 
  <!-- begin:header -->
@@ -37,7 +37,7 @@
 
                                 <div class="input-group date" id="datetimepicker1">
                                     
-                                    @Html.TextBox("tbxDatePicker", null, new { @class="form-control", name="tbxDatePicker" })
+                                    @Html.TextBox("Date", null, new { @class = "form-control", name = "Date" })
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -50,12 +50,12 @@
                                 @*@Html.DropDownList("Areas", null, new { @class = "form-control", name="Areas" })*@
                                 @*@Html.DropDownListFor(a=>a.LocationID,ViewBag.Areas as SelectList, "Select Area", new { @class = "form-control", name = "Areas" })*@
 
-                                @Html.DropDownListFor(a=>a.Areas,Model.Areas, "Select an Area", new { @class = "form-control", name = "Areas" })
+                                @Html.DropDownListFor(a => a.Areas, Model.Areas, "Select an Area", new { @class = "form-control", name = "Areas" })
                               
                             </div>
                         </div>
                         <!-- break -->
-                        <div class="col-md-6 col-sm-6 ">
+                        <div class="col-md-6 col-sm-6">
                             <div class="form-group">
                                 <label for="event">Event Type</label>
                                 @*@Html.DropDownList("Categories", null, new { @class = "form-control", name="Categories" })*@
@@ -70,8 +70,11 @@
                         </div>
 
                         <div class="col-md-12 col-sm-12 ">
-                            @*@Html.ActionLink("Search Karo", "Search", "Vendor", new { AreaCode = Areas}, new { @class = "btn btn-success btn-lg btn-block" })*@
-                            <input type="submit" value="Search" class="btn btn-success btn-lg btn-block" id="Submit" />
+                            @*@Html.ActionLink("Search Karo", "Search",new{@Areas = @Model.AreaCode, @Events = @Model.CategoryID}, new { @class = "btn btn-success btn-lg btn-block" })*@
+                            @*<input type="submit" class="btn btn-success btn-lg btn-block" id="Submit" />*@  
+
+                            <input type="submit" value="Submit" class="btn btn-success btn-lg btn-block" id="Submit" />
+                            
                         </div>
 
                     </div>
@@ -114,9 +117,8 @@
     </div>
 </div>
     
-}
-<!-- end:partner -->
-<script type="text/javascript">
+    
+   <script type="text/javascript">
     $(function ($) {
         $('#datetimepicker1').datetimepicker()
     });
@@ -134,20 +136,22 @@
     //$('#Submit').click(function () {
 
 
-    //    var url = '/Vendor/Search/';
+       
     //    var AreaCode = $('#Areas').val();
     //    var Events = $('#Events').val();
+    //    var url = '/Vendor/Search?' + 'Areas=' + AreaCode + 'Events=' + Events;
+    //    //alert('test');
+    //    ////$.post(url, { AreaCode: AreaCode }, function (data) {
        
-    //    //$.post(url, { AreaCode: AreaCode }, function (data) {
-    //    $.post(url, {},function () {
-    //        //alert('test');
-    //        //$('#itemsList').html(data);
+    //    window.location = url;
 
-    //    })
+       
        
 
     //});
 
 
     //});
-</script>
+</script> 
+}
+<!-- end:partner -->

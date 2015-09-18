@@ -13,7 +13,7 @@ namespace BookKaroMVC.Controllers
 {
     public class CategoryController : Controller
     {
-        private BookKaroEntities1 db = new BookKaroEntities1();
+        private BookKaroEntities2 db = new BookKaroEntities2();
 
         // GET: /Category/
         public async Task<ActionResult> Index()

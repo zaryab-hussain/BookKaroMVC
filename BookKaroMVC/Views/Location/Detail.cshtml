@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-12 single-post">
                         <ul id="myTab" class="nav nav-tabs nav-justified">
-                            <li class="active"><a href="#detail" data-toggle="tab"><i class="fa fa-university"></i> Property Detail</a></li>
+                            <li class="active"><a href="#detail" data-toggle="tab"><i class="fa fa-university"></i> Location Detail</a></li>
                             <li><a href="#location" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Property Location</a></li>
                         </ul>
 
@@ -25,26 +25,36 @@
                                         <h2>@Html.DisplayFor(modelItem => modelItem.VendorName)</h2>
                                         <div id="slider-property" class="carousel slide" data-ride="carousel">
                                             <ol class="carousel-indicators">
-                                                <li data-target="#slider-property" data-slide-to="0" class="">
-                                                    <img src="img/img02.jpg" alt="">
-                                                </li>
-                                                <li data-target="#slider-property" data-slide-to="1" class="active">
-                                                    <img src="img/img03.jpg" alt="">
-                                                </li>
-                                                <li data-target="#slider-property" data-slide-to="2">
-                                                    <img src="img/img04.jpg" alt="">
-                                                </li>
+
+                                                @foreach (var item in Model.VendorImageSource)
+                                                {
+                                                    <li data-target="#slider-property" data-slide-to="0" class="">
+                                                        <img src="@Url.Content("~/Content/Images/" + item)" alt="">
+                                                    </li>
+                                                }
+                                                @*<li data-target="#slider-property" data-slide-to="0" class="">
+                                                        <img src="img/img02.jpg" alt="">
+                                                    </li>
+                                                    <li data-target="#slider-property" data-slide-to="1" class="active">
+                                                        <img src="img/img03.jpg" alt="">
+                                                    </li>
+                                                    <li data-target="#slider-property" data-slide-to="2">
+                                                        <img src="img/img04.jpg" alt="">
+                                                    </li>*@
                                             </ol>
                                             <div class="carousel-inner">
-                                                <div class="item">
-                                                    <img src="img/img02.jpg" alt="">
-                                                </div>
+
                                                 <div class="item active">
-                                                    <img src="img/img03.jpg" alt="">
+                                                    <img src="@Url.Content("~/Content/Images/" + Model.VendorImageSource[0])" alt="">
                                                 </div>
-                                                <div class="item">
-                                                    <img src="img/img04.jpg" alt="">
-                                                </div>
+                                               @for (int i = 1; i < Model.VendorImageSource.Count; i++)
+
+                                                {
+                                                   <div class="item">
+                                                        <img src="@Url.Content("~/Content/Images/" + Model.VendorImageSource[i])" alt="">
+                                                    </div>
+                                                }
+                                               
                                             </div>
                                             <a class="left carousel-control" href="#slider-property" data-slide="prev">
                                                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -63,7 +73,8 @@
                                                 <td><strong>Rates</strong></td>
                                                 <td>@Html.DisplayFor(model => model.VendorPriceRangeMinimum)Pkr - @Html.DisplayFor(modelItem => modelItem.VendorPriceRangeMaximum)Pkr </td>
                                                 @*<td>$800,000</td>*@
-                                        
+
+                                                >
                                             </tr>
                                             <tr>
                                                 <td><strong>Type</strong></td>
@@ -95,17 +106,24 @@
                                         <div class="row">
                                             <div class="col-md-4 col-sm-4">
                                                 <ul>
-                                                    <li><i class="fa fa-check"></i> Air conditioning</li>
-                                                    <li><i class="fa fa-check"></i> Balcony</li>
-                                                    <li><i class="fa fa-times"></i> Bedding</li>
-                                                    <li><i class="fa fa-check"></i> Cable TV</li>
-                                                    <li><i class="fa fa-times"></i> Cleaning after exit</li>
-                                                    <li><i class="fa fa-check"></i> Cofee pot</li>
-                                                    <li><i class="fa fa-check"></i> Computer</li>
-                                                    <li><i class="fa fa-times"></i> Cot</li>
+
+                                                    @foreach (var item in Model.Facility)
+                                                    {
+                                                       <li><i class="fa fa-check"></i>@Html.DisplayFor(model => model.Facility) </li>
+                                                    }
+
+                                              
+
+                                                    @*<li><i class="fa fa-check"></i> Balcony</li>*@
+                                                    @*<li><i class="fa fa-times"></i> Bedding</li>*@
+                                                    @*<li><i class="fa fa-check"></i> Cable TV</li>*@
+                                                    @*<li><i class="fa fa-times"></i> Cleaning after exit</li>*@
+                                                    @*<li><i class="fa fa-check"></i> Cofee pot</li>
+                                                    <li><i class="fa fa-check"></i> Computer</li>*@
+                                                    @*<li><i class="fa fa-times"></i> Cot</li>*@
                                                 </ul>
                                             </div>
-                                            <div class="col-md-4 col-sm-4">
+                                            @*<div class="col-md-4 col-sm-4">
                                                 <ul>
                                                     <li><i class="fa fa-check"></i> Internet</li>
                                                     <li><i class="fa fa-times"></i> Iron</li>
@@ -116,8 +134,8 @@
                                                     <li><i class="fa fa-times"></i> Parking</li>
                                                     <li><i class="fa fa-times"></i> Parquet</li>
                                                 </ul>
-                                            </div>
-                                            <div class="col-md-4 col-sm-4">
+                                            </div>*@
+                                            @*<div class="col-md-4 col-sm-4">
                                                 <ul>
                                                     <li><i class="fa fa-times"></i> Radio</li>
                                                     <li><i class="fa fa-check"></i> Roof terrace</li>
@@ -128,7 +146,7 @@
                                                     <li><i class="fa fa-check"></i> Use of pool</li>
                                                     <li><i class="fa fa-check"></i> Video</li>
                                                 </ul>
-                                            </div>
+                                            </div>*@
                                         </div>
 
                                         <h3>Property Description</h3>
@@ -266,4 +284,3 @@
         </div>
     </div>
 </div>
-

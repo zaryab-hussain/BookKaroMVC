@@ -154,8 +154,6 @@
           <Property Name="UserAddress" Type="varchar" MaxLength="500" />
           <Property Name="RoleID" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'BookKaro.dbo.tblUserRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblUserRole">
           <Key>
             <PropertyRef Name="UserID" />
@@ -182,8 +180,6 @@ warning 6002: The table/view 'BookKaro.dbo.tblUserRole' does not have a primary 
           <Property Name="VendorCapacityMaximum" Type="varchar" MaxLength="50" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="AreaCode" Type="int" Nullable="false" />
-          <Property Name="FacilityID" Type="int" Nullable="false" />
-          <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="VendorImageSource" Type="varchar(max)" />
           <Property Name="VendorDescription" Type="varchar(max)" />
         </EntityType>
@@ -196,6 +192,16 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           </Key>
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="VendorID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BookKaro.dbo.tblVendorFacility' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblVendorFacility">
+          <Key>
+            <PropertyRef Name="VendorID" />
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Name="VendorID" Type="int" Nullable="false" />
+          <Property Name="FacilityID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Booking_BookingItem">
           <End Role="tblBookingItem" Type="Self.tblBookingItem" Multiplicity="1" />
@@ -341,30 +347,6 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblVendor_tblCategory">
-          <End Role="tblCategory" Type="Self.tblCategory" Multiplicity="1" />
-          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblCategory">
-              <PropertyRef Name="CategoryID" />
-            </Principal>
-            <Dependent Role="tblVendor">
-              <PropertyRef Name="CategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblVendor_tblFacility">
-          <End Role="tblFacility" Type="Self.tblFacility" Multiplicity="1" />
-          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblFacility">
-              <PropertyRef Name="FacilityID" />
-            </Principal>
-            <Dependent Role="tblVendor">
-              <PropertyRef Name="FacilityID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblVendor_tblMembership">
           <End Role="tblMembership" Type="Self.tblMembership" Multiplicity="1" />
           <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
@@ -413,6 +395,30 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblVendorFacility_tblFacility">
+          <End Role="tblFacility" Type="Self.tblFacility" Multiplicity="1" />
+          <End Role="tblVendorFacility" Type="Self.tblVendorFacility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFacility">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="tblVendorFacility">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendorFacility_tblVendor">
+          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="1" />
+          <End Role="tblVendorFacility" Type="Self.tblVendorFacility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="tblVendorFacility">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BookKaroModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblArea" EntityType="Self.tblArea" Schema="dbo" store:Type="Tables" />
@@ -427,18 +433,19 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <EntitySet Name="tblMembership" EntityType="Self.tblMembership" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblVendor" EntityType="Self.tblVendor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblUserRole].[UserID] AS [UserID], 
-    [tblUserRole].[RoleID] AS [RoleID]
-    FROM [dbo].[tblUserRole] AS [tblUserRole]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tblVendorCategory" EntityType="Self.tblVendorCategory" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblVendorCategory].[CategoryID] AS [CategoryID], 
     [tblVendorCategory].[VendorID] AS [VendorID]
     FROM [dbo].[tblVendorCategory] AS [tblVendorCategory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblVendorFacility" EntityType="Self.tblVendorFacility" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblVendorFacility].[VendorID] AS [VendorID], 
+    [tblVendorFacility].[FacilityID] AS [FacilityID]
+    FROM [dbo].[tblVendorFacility] AS [tblVendorFacility]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Booking_BookingItem" Association="Self.FK_Booking_BookingItem">
             <End Role="tblBookingItem" EntitySet="tblBookingItem" />
@@ -488,14 +495,6 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
             <End Role="tblArea" EntitySet="tblArea" />
             <End Role="tblVendor" EntitySet="tblVendor" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblVendor_tblCategory" Association="Self.FK_tblVendor_tblCategory">
-            <End Role="tblCategory" EntitySet="tblCategory" />
-            <End Role="tblVendor" EntitySet="tblVendor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblVendor_tblFacility" Association="Self.FK_tblVendor_tblFacility">
-            <End Role="tblFacility" EntitySet="tblFacility" />
-            <End Role="tblVendor" EntitySet="tblVendor" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblVendor_tblMembership" Association="Self.FK_tblVendor_tblMembership">
             <End Role="tblMembership" EntitySet="tblMembership" />
             <End Role="tblVendor" EntitySet="tblVendor" />
@@ -511,6 +510,14 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <AssociationSet Name="FK_tblVendorCategory_tblVendorCategory" Association="Self.FK_tblVendorCategory_tblVendorCategory">
             <End Role="tblCategory" EntitySet="tblCategory" />
             <End Role="tblVendorCategory" EntitySet="tblVendorCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendorFacility_tblFacility" Association="Self.FK_tblVendorFacility_tblFacility">
+            <End Role="tblFacility" EntitySet="tblFacility" />
+            <End Role="tblVendorFacility" EntitySet="tblVendorFacility" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendorFacility_tblVendor" Association="Self.FK_tblVendorFacility_tblVendor">
+            <End Role="tblVendor" EntitySet="tblVendor" />
+            <End Role="tblVendorFacility" EntitySet="tblVendorFacility" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -566,7 +573,6 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <Property Name="CategoryDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="CategoryRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblVendors" Relationship="Self.tblVendorCategory" FromRole="tblCategory" ToRole="tblVendor" />
-          <NavigationProperty Name="tblVendors1" Relationship="BookKaroModel.FK_tblVendor_tblCategory" FromRole="tblCategory" ToRole="tblVendor" />
         </EntityType>
         <EntityType Name="tblCity">
           <Key>
@@ -626,7 +632,7 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <Property Name="FacilityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FacilityDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FacilityRemarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblVendors" Relationship="Self.FK_tblVendor_tblFacility" FromRole="tblFacility" ToRole="tblVendor" />
+          <NavigationProperty Name="tblVendors" Relationship="BookKaroModel.tblVendorFacility1" FromRole="tblFacility" ToRole="tblVendor" />
         </EntityType>
         <EntityType Name="tblImage">
           <Key>
@@ -655,8 +661,8 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RoleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RoleRemarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblUsers" Relationship="Self.tblUserRole" FromRole="tblRole" ToRole="tblUser" />
-          <NavigationProperty Name="tblUsers1" Relationship="BookKaroModel.FK_tblUser_tblRole" FromRole="tblRole" ToRole="tblUser" />
+          <NavigationProperty Name="tblUsers" Relationship="Self.FK_tblUser_tblRole" FromRole="tblRole" ToRole="tblUser" />
+          <NavigationProperty Name="tblUsers1" Relationship="Self.tblUserRole" FromRole="tblRole" ToRole="tblUser" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -674,11 +680,11 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <Property Name="UserPreviousPasswordDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserLoginDate" Type="DateTime" Precision="3" />
           <Property Name="UserAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblCustomers" Relationship="Self.FK_tblCustomer_tblUser" FromRole="tblUser" ToRole="tblCustomer" />
+          <NavigationProperty Name="tblRole" Relationship="Self.FK_tblUser_tblRole" FromRole="tblUser" ToRole="tblRole" />
           <NavigationProperty Name="tblVendors" Relationship="Self.FK_tblVendor_tblUser" FromRole="tblUser" ToRole="tblVendor" />
           <NavigationProperty Name="tblRoles" Relationship="Self.tblUserRole" FromRole="tblUser" ToRole="tblRole" />
-          <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblRole" Relationship="BookKaroModel.FK_tblUser_tblRole" FromRole="tblUser" ToRole="tblRole" />
         </EntityType>
         <EntityType Name="tblVendor">
           <Key>
@@ -698,18 +704,15 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <Property Name="VendorCapacityMaximum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="AreaCode" Type="Int32" Nullable="false" />
-          <Property Name="FacilityID" Type="Int32" Nullable="false" />
+          <Property Name="VendorImageSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VendorDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblArea" Relationship="Self.FK_tblVendor_tblArea" FromRole="tblVendor" ToRole="tblArea" />
           <NavigationProperty Name="tblBookingItems" Relationship="Self.FK_tblBookingItem_tblVendor" FromRole="tblVendor" ToRole="tblBookingItem" />
-          <NavigationProperty Name="tblFacility" Relationship="Self.FK_tblVendor_tblFacility" FromRole="tblVendor" ToRole="tblFacility" />
           <NavigationProperty Name="tblImages" Relationship="Self.FK_tblImage_tblImage" FromRole="tblVendor" ToRole="tblImage" />
           <NavigationProperty Name="tblMembership" Relationship="Self.FK_tblVendor_tblMembership" FromRole="tblVendor" ToRole="tblMembership" />
           <NavigationProperty Name="tblUser" Relationship="Self.FK_tblVendor_tblUser" FromRole="tblVendor" ToRole="tblUser" />
           <NavigationProperty Name="tblCategories" Relationship="Self.tblVendorCategory" FromRole="tblVendor" ToRole="tblCategory" />
-          <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblCategory" Relationship="BookKaroModel.FK_tblVendor_tblCategory" FromRole="tblVendor" ToRole="tblCategory" />
-          <Property Name="VendorImageSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="VendorDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblFacilities" Relationship="BookKaroModel.tblVendorFacility1" FromRole="tblVendor" ToRole="tblFacility" />
         </EntityType>
         <Association Name="FK_tblArea_tblCity">
           <End Role="tblCity" Type="Self.tblCity" Multiplicity="1" />
@@ -783,18 +786,6 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblVendor_tblFacility">
-          <End Role="tblFacility" Type="Self.tblFacility" Multiplicity="1" />
-          <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblFacility">
-              <PropertyRef Name="FacilityID" />
-            </Principal>
-            <Dependent Role="tblVendor">
-              <PropertyRef Name="FacilityID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblImage_tblImage">
           <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="1" />
           <End Role="tblImage" Type="Self.tblImage" Multiplicity="*" />
@@ -816,6 +807,18 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
             </Principal>
             <Dependent Role="tblVendor">
               <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="RoleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -843,7 +846,7 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <End Role="tblVendor" Type="Self.tblVendor" Multiplicity="*" />
           <End Role="tblCategory" Type="Self.tblCategory" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="BookKaroEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BookKaroEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tblAreas" EntityType="Self.tblArea" />
           <EntitySet Name="tblBookingItems" EntityType="Self.tblBookingItem" />
@@ -881,10 +884,6 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
             <End Role="tblUser" EntitySet="tblUsers" />
             <End Role="tblCustomer" EntitySet="tblCustomers" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblVendor_tblFacility" Association="Self.FK_tblVendor_tblFacility">
-            <End Role="tblFacility" EntitySet="tblFacilities" />
-            <End Role="tblVendor" EntitySet="tblVendors" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblImage_tblImage" Association="Self.FK_tblImage_tblImage">
             <End Role="tblVendor" EntitySet="tblVendors" />
             <End Role="tblImage" EntitySet="tblImages" />
@@ -892,6 +891,10 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <AssociationSet Name="FK_tblVendor_tblMembership" Association="Self.FK_tblVendor_tblMembership">
             <End Role="tblMembership" EntitySet="tblMemberships" />
             <End Role="tblVendor" EntitySet="tblVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblRole" Association="Self.FK_tblUser_tblRole">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblUser" EntitySet="tblUsers" />
           </AssociationSet>
           <AssociationSet Name="FK_tblVendor_tblUser" Association="Self.FK_tblVendor_tblUser">
             <End Role="tblUser" EntitySet="tblUsers" />
@@ -909,45 +912,21 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
             <End Role="tblVendor" EntitySet="tblVendors" />
             <End Role="tblCategory" EntitySet="tblCategories" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblVendor_tblCategory" Association="BookKaroModel.FK_tblVendor_tblCategory">
-            <End Role="tblCategory" EntitySet="tblCategories" />
+          <AssociationSet Name="tblVendorFacility1" Association="BookKaroModel.tblVendorFacility1">
+            <End Role="tblFacility" EntitySet="tblFacilities" />
             <End Role="tblVendor" EntitySet="tblVendors" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblUser_tblRole" Association="BookKaroModel.FK_tblUser_tblRole">
-            <End Role="tblRole" EntitySet="tblRoles" />
-            <End Role="tblUser" EntitySet="tblUsers" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_tblVendor_tblCategory">
-          <End Type="BookKaroModel.tblCategory" Role="tblCategory" Multiplicity="1" />
+        <Association Name="tblVendorFacility1">
+          <End Type="BookKaroModel.tblFacility" Role="tblFacility" Multiplicity="*" />
           <End Type="BookKaroModel.tblVendor" Role="tblVendor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblCategory">
-              <PropertyRef Name="CategoryID" />
-            </Principal>
-            <Dependent Role="tblVendor">
-              <PropertyRef Name="CategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblUser_tblRole">
-          <End Type="BookKaroModel.tblRole" Role="tblRole" Multiplicity="1" />
-          <End Type="BookKaroModel.tblUser" Role="tblUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblRole">
-              <PropertyRef Name="RoleID" />
-            </Principal>
-            <Dependent Role="tblUser">
-              <PropertyRef Name="RoleID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BookKaroModelStoreContainer" CdmEntityContainer="BookKaroEntities1">
+        <EntityContainerMapping StorageEntityContainer="BookKaroModelStoreContainer" CdmEntityContainer="BookKaroEntities2">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="BookKaroModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -1085,7 +1064,6 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
           <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="BookKaroModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
@@ -1098,15 +1076,13 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
                 <ScalarProperty Name="UserPreviousPasswordDate" ColumnName="UserPreviousPasswordDate" />
                 <ScalarProperty Name="UserLoginDate" ColumnName="UserLoginDate" />
                 <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblVendors">
             <EntityTypeMapping TypeName="BookKaroModel.tblVendor">
               <MappingFragment StoreEntitySet="tblVendor">
-                <ScalarProperty Name="VendorDescription" ColumnName="VendorDescription" />
-                <ScalarProperty Name="VendorImageSource" ColumnName="VendorImageSource" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="VendorID" ColumnName="VendorID" />
                 <ScalarProperty Name="VendorName" ColumnName="VendorName" />
                 <ScalarProperty Name="VendorPriceRangeMinimum" ColumnName="VendorPriceRangeMinimum" />
@@ -1121,7 +1097,8 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
                 <ScalarProperty Name="VendorCapacityMaximum" ColumnName="VendorCapacityMaximum" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
-                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="VendorImageSource" ColumnName="VendorImageSource" />
+                <ScalarProperty Name="VendorDescription" ColumnName="VendorDescription" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1147,6 +1124,14 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorCategory' does not have a pr
             </EndProperty>
             <EndProperty Name="tblCategory">
               <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tblVendorFacility1" TypeName="BookKaroModel.tblVendorFacility1" StoreEntitySet="tblVendorFacility">
+            <EndProperty Name="tblVendor">
+              <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+            </EndProperty>
+            <EndProperty Name="tblFacility">
+              <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

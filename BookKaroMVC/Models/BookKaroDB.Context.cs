@@ -13,10 +13,10 @@ namespace BookKaroMVC.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BookKaroEntities1 : DbContext
+    public partial class BookKaroEntities2 : DbContext
     {
-        public BookKaroEntities1()
-            : base("name=BookKaroEntities1")
+        public BookKaroEntities2()
+            : base("name=BookKaroEntities2")
         {
         }
     

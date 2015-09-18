@@ -11,7 +11,7 @@ namespace BookKaroMVC.Controllers
     public class HomeController : Controller
     {
 
-        private BookKaroEntities1 db = new BookKaroEntities1();
+        private BookKaroEntities2 db = new BookKaroEntities2();
         //
         // GET: /Home/
         public ActionResult Index()
@@ -146,6 +146,6 @@ namespace BookKaroMVC.Controllers
         //}
 
 
-       
+        
     }
 }

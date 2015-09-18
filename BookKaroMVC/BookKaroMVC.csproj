@@ -169,22 +169,22 @@
     <Content Include="Content\Styles\style.css" />
     <Content Include="Content\Styles\style.min.css" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Models\BookKaroEF.edmx">
+    <EntityDeploy Include="Models\BookKaroDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BookKaroEF.Designer.cs</LastGenOutput>
+      <LastGenOutput>BookKaroDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\BookKaroEF.Context.tt">
+    <Content Include="Models\BookKaroDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookKaroEF.edmx</DependentUpon>
-      <LastGenOutput>BookKaroEF.Context.cs</LastGenOutput>
+      <DependentUpon>BookKaroDB.edmx</DependentUpon>
+      <LastGenOutput>BookKaroDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\BookKaroEF.edmx.diagram">
-      <DependentUpon>BookKaroEF.edmx</DependentUpon>
+    <Content Include="Models\BookKaroDB.edmx.diagram">
+      <DependentUpon>BookKaroDB.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\BookKaroEF.tt">
+    <Content Include="Models\BookKaroDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookKaroEF.edmx</DependentUpon>
-      <LastGenOutput>BookKaroEF.cs</LastGenOutput>
+      <DependentUpon>BookKaroDB.edmx</DependentUpon>
+      <LastGenOutput>BookKaroDB.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -204,63 +204,63 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\FacilityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\VendorController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookKaroEF.Context.cs">
+    <Compile Include="Models\BookKaroDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookKaroEF.Context.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookKaroEF.cs">
+    <Compile Include="Models\BookKaroDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookKaroEF.Designer.cs">
+    <Compile Include="Models\BookKaroDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookKaroEF.edmx</DependentUpon>
+      <DependentUpon>BookKaroDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblArea.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblBookingItem.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblCategory.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblCity.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblCountry.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblCustomer.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblFacility.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblImage.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblMembership.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblRole.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblUser.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblVendor.cs">
-      <DependentUpon>BookKaroEF.tt</DependentUpon>
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -283,8 +283,8 @@
     <Content Include="Views\Shared\Partial1.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Vendor\Search.cshtml" />
-    <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Location\Search.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
     <Content Include="Views\Facility\Create.cshtml" />
     <Content Include="Views\Facility\Delete.cshtml" />
     <Content Include="Views\Facility\Details.cshtml" />
@@ -295,7 +295,7 @@
     <Content Include="Views\Category\Details.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
-    <Content Include="Views\Vendor\Detail.cshtml" />
+    <Content Include="Views\Location\Detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

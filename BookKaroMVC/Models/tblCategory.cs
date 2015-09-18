@@ -17,7 +17,6 @@ namespace BookKaroMVC.Models
         public tblCategory()
         {
             this.tblVendors = new HashSet<tblVendor>();
-            this.tblVendors1 = new HashSet<tblVendor>();
         }
     
         public int CategoryID { get; set; }
@@ -26,6 +25,5 @@ namespace BookKaroMVC.Models
         public string CategoryRemarks { get; set; }
     
         public virtual ICollection<tblVendor> tblVendors { get; set; }
-        public virtual ICollection<tblVendor> tblVendors1 { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace BookKaroMVC.Models
             this.tblBookingItems = new HashSet<tblBookingItem>();
             this.tblImages = new HashSet<tblImage>();
             this.tblCategories = new HashSet<tblCategory>();
+            this.tblFacilities = new HashSet<tblFacility>();
         }
     
         public int VendorID { get; set; }
@@ -35,18 +36,15 @@ namespace BookKaroMVC.Models
         public string VendorCapacityMaximum { get; set; }
         public int UserID { get; set; }
         public int AreaCode { get; set; }
-        public int FacilityID { get; set; }
-        public int CategoryID { get; set; }
         public string VendorImageSource { get; set; }
         public string VendorDescription { get; set; }
     
         public virtual tblArea tblArea { get; set; }
         public virtual ICollection<tblBookingItem> tblBookingItems { get; set; }
-        public virtual tblFacility tblFacility { get; set; }
         public virtual ICollection<tblImage> tblImages { get; set; }
         public virtual tblMembership tblMembership { get; set; }
         public virtual tblUser tblUser { get; set; }
         public virtual ICollection<tblCategory> tblCategories { get; set; }
-        public virtual tblCategory tblCategory { get; set; }
+        public virtual ICollection<tblFacility> tblFacilities { get; set; }
     }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="373d45c9e8884e56b1debe431d7176b8" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="BookKaroModel.sysdiagram" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblArea" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblBookingItem" Width="1.5" PointX="10.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblCategory" Width="1.5" PointX="10.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblCity" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblCountry" Width="1.5" PointX="1.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblCustomer" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblFacility" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblImage" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblMembership" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblRole" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblUser" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKaroModel.tblVendor" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="BookKaroModel.FK_tblArea_tblCity" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.FK_tblCustomer_tblArea" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.FK_tblVendor_tblArea" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.FK_tblBookingItem_tblVendor" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.FK_tblCity_tblCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.FK_tblCustomer_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.FK_tblImage_tblImage" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.FK_tblVendor_tblMembership" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.FK_tblUser_tblRole" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.FK_tblVendor_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.tblBooking" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.tblUserRole" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.tblVendorCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKaroModel.tblVendorFacility1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -36,8 +36,8 @@ namespace BookKaroMVC.Models
         public int RoleID { get; set; }
     
         public virtual ICollection<tblCustomer> tblCustomers { get; set; }
+        public virtual tblRole tblRole { get; set; }
         public virtual ICollection<tblVendor> tblVendors { get; set; }
         public virtual ICollection<tblRole> tblRoles { get; set; }
-        public virtual tblRole tblRole { get; set; }
     }
 }
