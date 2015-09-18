@@ -13,9 +13,13 @@ namespace BookKaroMVC.ViewModels
 
         public string PriceRangeMinimum { get; set; }
 
+        public string PriceRangeMaximum { get; set; }
+
         public string AreaName { get; set; }
 
         public string CapacityMinimum { get; set; }
+
+        public string CapacityMaximum { get; set; }
         public string ImageSource { get; set; }
 
     }

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<BookKaroMVC.Models.tblUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserDisplayName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsePassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UseLast_Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserRegistration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPreviousPasswordDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserLoginDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblRole.RoleName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserDisplayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsePassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UseLast_Login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserRegistration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPreviousPasswordDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserLoginDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblRole.RoleName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+    </tr>
+}
+
+</table>

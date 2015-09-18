@@ -1,0 +1,114 @@
+﻿@model BookKaroMVC.Models.tblUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblUser</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserDisplayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserDisplayName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsePassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsePassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UseLast_Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UseLast_Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserRegistration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserRegistration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPreviousPasswordDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPreviousPasswordDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserLoginDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserLoginDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblRole.RoleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblRole.RoleName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

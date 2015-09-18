@@ -1,0 +1,138 @@
+﻿@model BookKaroMVC.Models.tblVendor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblVendor</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorPriceRangeMinimum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorPriceRangeMinimum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorCapacityMinimum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorCapacityMinimum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorEnteredOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorEnteredOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorEnteredBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorEnteredBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorUpdatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorUpdatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorUpdatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorUpdatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorPriceRangeMaximum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorPriceRangeMaximum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorCapacityMaximum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorCapacityMaximum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorImageSource)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorImageSource)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblArea.AreaDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblArea.AreaDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblMembership.MembershipCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblMembership.MembershipCategory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblUser.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblUser.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VendorID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

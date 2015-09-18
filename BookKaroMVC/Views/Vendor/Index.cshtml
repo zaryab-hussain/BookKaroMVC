@@ -1,0 +1,117 @@
+﻿@model IEnumerable<BookKaroMVC.Models.tblVendor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+        <th>
+           @Html.DisplayName("Min Price")
+        </th>
+        <th>
+            @Html.DisplayName("Min Capacity")
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.VendorEnteredOn)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.VendorEnteredBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorUpdatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorUpdatedBy)
+        </th>*@
+        <th>
+            @Html.DisplayName("Max Price")
+        </th>
+        <th>
+            @Html.DisplayName("Add")
+        </th>
+        <th>
+            @Html.DisplayName("Max Capacity")
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.VendorImageSource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorDescription)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.tblArea.AreaDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblMembership.MembershipCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblUser.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorPriceRangeMinimum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorCapacityMinimum)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.VendorEnteredOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorEnteredBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorUpdatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorUpdatedBy)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorPriceRangeMaximum)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.VendorAddress)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorCapacityMaximum)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.VendorImageSource)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorDescription)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.tblArea.AreaDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblMembership.MembershipCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblUser.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VendorID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VendorID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VendorID })
+        </td>
+    </tr>
+}
+
+</table>
