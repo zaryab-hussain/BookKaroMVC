@@ -100,8 +100,37 @@ namespace BookKaroMVC.Controllers
             }
         }
 
+        //[HttpGet]
+        //public ViewResult Search(string Date, string Areas, string Events, string Guests)
+        //{
+        //    //var SearchCriteria = new HomeViewModel();
+        //    //SearchCriteria.LocationID = ;
+
+
+        //    int AreaCode = (string.Equals(Areas, "")) ? 0 : Convert.ToInt32(Areas);
+        //    int EventCode = (string.Equals(Events, "")) ? 0 : Convert.ToInt32(Events);
+        //    int NoOfGuests = (string.Equals(Guests, "")) ? 0 : Convert.ToInt32(Guests);
+        //    int? eventType;
+
+        //    var SearchResults = (from v in db.tblVendors
+        //                         from vendorCategory in v.tblCategories
+        //                         join Category in db.tblCategories on vendorCategory.CategoryID equals Category.CategoryID
+        //                         join a in db.tblAreas on v.AreaCode equals a.AreaCode
+        //                         where a.AreaCode == AreaCode && Category.CategoryID == EventCode
+        //                         select new SearchResultsViewModel() { CategoryName = Category.CategoryName, VendorName = v.VendorName, PriceRangeMinimum = v.VendorPriceRangeMinimum, AreaName = a.AreaDescription, CapacityMinimum = v.VendorCapacityMinimum,  CapacityMaximum = v.VendorCapacityMaximum, PriceRangeMaximum = v.VendorPriceRangeMaximum,ImageSource = v.VendorImageSource , VendorID = v.VendorID});
+
+
+
+
+        //    return View(SearchResults);
+        //}
+
+
+
+
+
         [HttpGet]
-        public ViewResult Search(string Date, string Areas, string Events, string Guests)
+        public ViewResult Search(string Date, string Areas, string Events, string Guests, string amountMin, string amountMax, string serviceType)
         {
             //var SearchCriteria = new HomeViewModel();
             //SearchCriteria.LocationID = ;
@@ -110,22 +139,51 @@ namespace BookKaroMVC.Controllers
             int AreaCode = (string.Equals(Areas, "")) ? 0 : Convert.ToInt32(Areas);
             int EventCode = (string.Equals(Events, "")) ? 0 : Convert.ToInt32(Events);
             int NoOfGuests = (string.Equals(Guests, "")) ? 0 : Convert.ToInt32(Guests);
-            int? eventType;
+            ViewBag.NoOfGuest = NoOfGuests;
+            int serviceCode = Convert.ToInt32(serviceType);
+            ViewBag.Service = serviceCode;
 
-            var SearchResults = (from v in db.tblVendors
-                                 from vendorCategory in v.tblCategories
-                                 join Category in db.tblCategories on vendorCategory.CategoryID equals Category.CategoryID
-                                 join a in db.tblAreas on v.AreaCode equals a.AreaCode
-                                 where a.AreaCode == AreaCode && Category.CategoryID == EventCode
-                                 select new SearchResultsViewModel() { CategoryName = Category.CategoryName, VendorName = v.VendorName, PriceRangeMinimum = v.VendorPriceRangeMinimum, AreaName = a.AreaDescription, CapacityMinimum = v.VendorCapacityMinimum,  CapacityMaximum = v.VendorCapacityMaximum, PriceRangeMaximum = v.VendorPriceRangeMaximum,ImageSource = v.VendorImageSource , VendorID = v.VendorID});
+            if (serviceType == null)
+            {
+                var SearchResults = (from v in db.tblVendors
+                                     from vendorCategory in v.tblCategories
+                                     join Category in db.tblCategories on vendorCategory.CategoryID equals Category.CategoryID
+                                     join a in db.tblAreas on v.AreaCode equals a.AreaCode
+                                     where a.AreaCode == AreaCode && Category.CategoryID == EventCode
+                                     select new SearchResultsViewModel()
+                                     {
+                                         CategoryName = Category.CategoryName,
+                                         VendorName = v.VendorName,
+                                         PriceRangeMinimum = v.VendorPriceRangeMinimum,
+                                         AreaName = a.AreaDescription,
+                                         CapacityMinimum = v.VendorCapacityMinimum,
+                                         CapacityMaximum = v.VendorCapacityMaximum,
+                                         PriceRangeMaximum = v.VendorPriceRangeMaximum,
+                                         ImageSource = v.VendorImageSource,
+                                         VendorID = v.VendorID
+                                     });
+                return View(SearchResults);
+            }
+            else
+            {
+                var SearchResults = (from v in db.tblVendors
+                                     from vendorService in v.tblServices
+                                     join service in db.tblServices on vendorService.ServiceID equals service.ServiceID
+                                     where service.ServiceID == serviceCode
+                                     select new SearchResultsViewModel()
+                                     {
+                                        
+                                         VendorName = v.VendorName,
+                                         PriceRangeMinimum = v.VendorPriceRangeMinimum,                                       
+                                         PriceRangeMaximum = v.VendorPriceRangeMaximum,
+                                         ImageSource = v.VendorImageSource,
+                                         VendorID = v.VendorID
+                                     });
+                return View(SearchResults);
+            }
 
 
-
-
-            return View(SearchResults);
         }
-
-
 
         [HttpGet]
         public ActionResult Detail(int id)
@@ -140,7 +198,7 @@ namespace BookKaroMVC.Controllers
             objVendorDetail = (from vendor in db.tblVendors
 
                                from vendorCategory in vendor.tblCategories
-                               join category in db.tblCategories on vendorCategory.CategoryID equals category.CategoryID
+                               join category in db.tblCategories.DefaultIfEmpty() on vendorCategory.CategoryID equals category.CategoryID
                                join a in db.tblAreas on vendor.AreaCode equals a.AreaCode
 
                                //join i in db.tblImages on v.VendorID equals i.VendorID
@@ -156,7 +214,7 @@ namespace BookKaroMVC.Controllers
                                    VendorDescription = vendor.VendorDescription,
                                    Area = a.AreaDescription,
                                    VendorAddress = vendor.VendorAddress,
-                                   
+
 
 
                                }).SingleOrDefault();
@@ -165,6 +223,7 @@ namespace BookKaroMVC.Controllers
                                          from vendorImages in vendor.tblImages
                                          where vendorImages.VendorID == VendorCode
                                          select vendorImages.ImageDetail).ToList();
+            
 
             List<string> Facilites = (from vendor in db.tblVendors
 

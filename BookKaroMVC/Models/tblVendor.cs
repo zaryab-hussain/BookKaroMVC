@@ -20,6 +20,7 @@ namespace BookKaroMVC.Models
             this.tblImages = new HashSet<tblImage>();
             this.tblCategories = new HashSet<tblCategory>();
             this.tblFacilities = new HashSet<tblFacility>();
+            this.tblServices = new HashSet<tblService>();
         }
     
         public int VendorID { get; set; }
@@ -46,5 +47,6 @@ namespace BookKaroMVC.Models
         public virtual tblUser tblUser { get; set; }
         public virtual ICollection<tblCategory> tblCategories { get; set; }
         public virtual ICollection<tblFacility> tblFacilities { get; set; }
+        public virtual ICollection<tblService> tblServices { get; set; }
     }
 }

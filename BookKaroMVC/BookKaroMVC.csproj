@@ -258,6 +258,9 @@
     <Compile Include="Models\tblRole.cs">
       <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblService.cs">
+      <DependentUpon>BookKaroDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblUser.cs">
       <DependentUpon>BookKaroDB.tt</DependentUpon>
     </Compile>

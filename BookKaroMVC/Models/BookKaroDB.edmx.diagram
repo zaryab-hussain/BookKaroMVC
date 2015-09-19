@@ -32,6 +32,8 @@
         <AssociationConnector Association="BookKaroModel.tblUserRole" ManuallyRouted="false" />
         <AssociationConnector Association="BookKaroModel.tblVendorCategory" ManuallyRouted="false" />
         <AssociationConnector Association="BookKaroModel.tblVendorFacility1" />
+        <EntityTypeShape EntityType="BookKaroModel.tblService" Width="1.5" PointX="4.375" PointY="12.875" />
+        <AssociationConnector Association="BookKaroModel.tblVendorService" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

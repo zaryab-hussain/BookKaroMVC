@@ -6,9 +6,15 @@
 
 <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Styles/default.css")" />
 <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Styles/component.css")" />
-<link rel="stylesheet" href="@Url.Content("//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css")" />
-<script src="@Url.Content("//code.jquery.com/ui/1.11.4/jquery-ui.js")"></script>
+@*<link rel="stylesheet" href="@Url.Content("//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css")" />*@
+
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Styles/jquery-ui.css")" />
+
+<script src="@Url.Content("~/Content/Scripts/jquery-ui.js")"></script>
 <script src="@Url.Content("~/Content/Scripts/modernizr.custom.js")" ></script>
+
+@using (Html.BeginForm("Search", "Location", FormMethod.Get))
+{
 <!-- begin:header -->
 <div id="header" class="heading" style="background-image: url(img/img01.jpg);">
     <div class="container">
@@ -85,8 +91,10 @@
                         <h3>Price Range</h3>
                     </div>
 
-
-                   <input type="text" ID="amount" readonly style="border:0; color:#912C96; font-weight:bold;">
+                    <label>Pkr</label>
+                   <input type="text" ID="amountMin" readonly style="border: 0; color: #912C96; font-weight: bold; border: 0; color: #912C96; font-weight: bold; width: 104px; display: inline; ">
+                    <label> - Pkr</label>
+                    <input type="text" id="amountMax" readonly style="border: 0; color: #912C96; font-weight: bold; border: 0; color: #912C96; font-weight: bold; width: 104px; display: inline; ">
                     <div id="slider-range"></div>
                 </div>
                 <!-- break -->
@@ -95,8 +103,9 @@
                         <h3>Services</h3>
                     </div>
                     <ul class="list-check">
+                        <li><a href="http://localhost:2870/Location/Search?Date=01%2F01%2F0001+12%3A00+AM&Areas=1&Events=1&Guests=@ViewBag.NoOfGuest&serviceType=1">Photography</a>&nbsp;(43)</li>
                         <li><a href="#">Place</a>&nbsp;(18)</li>
-                        <li><a href="#">Photography</a>&nbsp;(43)</li>
+                     
                         <li><a href="#">Catering</a>&nbsp;(31)</li>
                         <li><a href="#">Food</a>&nbsp;(52)</li>
                         <li><a href="#">Beauty Saloon</a>&nbsp;(8)</li>
@@ -108,8 +117,9 @@
                         <h3>Location</h3>
                     </div>
                     <ul>
-                        <li><a href="#">Gulshan Town</a></li>
-                        <li><a href="#">Defence/Clifton</a></li>
+                  
+                        <li ><a href="#">Gulshan Town</a></li>
+                        <li><a href="http://localhost:2870/Location/Search?Date=01%2F01%2F0001+12%3A00+AM&Areas=1&Events=1&Guests=@ViewBag.NoOfGuest">Defence/Clifton</a></li>
                         <li><a href="#">Shahra-e-Faisal</a></li>
                         <li><a href="#">North Nazimabad</a></li>
                         <li><a href="#">North Karachi</a></li>
@@ -126,7 +136,11 @@
     </div>
 
 </div>
-
+    
+    
+    <div id="test">
+         </div>
+}
 <!-- end:content -->
 
 
@@ -139,14 +153,49 @@
             max: 500000,
             values: [1000, 1000],
             slide: function (event, ui) {
-                $("#amount").val("PKR" + ui.values[0] + " - PKR" + ui.values[1]);
+                $("#amountMin").val(+ ui.values[0]);
+
+                $("#amountMax").val( + ui.values[1]);
+                var pathname = window.location.pathname;
+                var amountMin = $("#amountMin").val();
+                var amountMax = $("#amountMax").val();
+
+                var url = pathname;
+
+                //$.ajax({
+                //    url: pathname, // script url to send
+                //    method: 'GET', // method of sending
+                //    data: $('form').has(this).serialize(),  // .serialize() make query string with form inputs name and value
+                //    dataType: 'json',  // expected data format returned from server, you may have something else
+                //    success: function (response) {
+                //        // response contains data returned from server
+                //    }
+                //});
+                //$.get(pathname),{amountMin : amountMin, amountMax : amountMax}, function (data) {
+                //    alert("Data: " + data + "\nStatus: " + status);
+                //});
+
+                //$.get(pathname, { amountMin: amountMin, amountMax: amountMax },function(data) {
+                //    $('#test').html(data);
+                //});
             }
         });
-        $("#amount").val("PKR" + $("#slider-range").slider("values", 0) +
-          " - PKR" + $("#slider-range").slider("values", 1));
+        $("#amountMin").val($("#slider-range").slider("values", 0));
+        $("#amountMax").val($("#slider-range").slider("values", 1));  
     });
 
-   
+
+    $("#Product_ID").on('change', function () {
+
+        var url = window.location.pathname;;
+        var id = $(this).val();
+        $.get(url, { id: id }, function (data) {
+            $("#Price").val(data);
+            $("#Total").val(data);
+
+        })
+
+    });
  
     </script>
 

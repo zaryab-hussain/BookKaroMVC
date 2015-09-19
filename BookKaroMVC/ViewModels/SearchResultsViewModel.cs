@@ -24,5 +24,7 @@ namespace BookKaroMVC.ViewModels
         public string CapacityMaximum { get; set; }
         public string ImageSource { get; set; }
 
+        public int Guests { get; set; }
+
     }
 }

@@ -38,5 +38,6 @@ namespace BookKaroMVC.Models
         public virtual DbSet<tblRole> tblRoles { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblVendor> tblVendors { get; set; }
+        public virtual DbSet<tblService> tblServices { get; set; }
     }
 }
