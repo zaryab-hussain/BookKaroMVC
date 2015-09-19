@@ -39,146 +39,25 @@
                 <div class="row container-realestate">
                     @foreach (var item in Model)
                     {
+
                          <div class="col-md-4 col-sm-6 col-xs-12">
                         <ul class="grid cs-style-4">
                             <li>
                                 <figure>
-                                    <div><img src="@Url.Content("~/Content/Images/" + item.ImageSource[0])" alt="" /></div>
+                                    <div><img src="@Url.Content("~/Content/Images/" + item.ImageSource)" alt="" /></div>
                                     <figcaption>
-                                        <h3>@Html.DisplayFor(modelItem => item.VendorName)</h3>
+                                        <h5>@Html.DisplayFor(modelItem => item.VendorName)</h5>
                                         <span><i class="fa fa-money"></i>@Html.DisplayFor(modelItem => item.PriceRangeMinimum) - @Html.DisplayFor(modelItem => item.PriceRangeMaximum)</span><br />
                                         <span><i class="fa fa-users"></i>@Html.DisplayFor(modelItem => item.CapacityMinimum) - @Html.DisplayFor(modelItem => item.CapacityMaximum)</span><br />
                                         <span><i class="fa fa-map-marker"></i> @Html.DisplayFor(modelItem => item.AreaName)</span>
-                                        <a href="http://dribbble.com/shots/1116775-Safari">Details</a>
+                                     @Html.ActionLink("Detail", "Detail", "Location", new { id = item.VendorID },null)
                                     </figcaption>
                                 </figure>
                             </li>
                         </ul>
                     </div>
                     }
-                   
-
-                    @*<div class="col-md-4 col-sm-6 col-xs-12">
-                        <ul class="grid cs-style-4">
-                            <li>
-                                <figure>
-                                    <div><img src="images/3.png" alt="img04" /></div>
-                                    <figcaption>
-                                        <h3>Safari</h3>
-                                        <span>Jacob Cummings</span>
-                                        <a href="http://dribbble.com/shots/1116775-Safari">Take a look</a>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <ul class="grid cs-style-4">
-                            <li>
-                                <figure>
-                                    <div><img src="images/2.png" alt="img04" /></div>
-                                    <figcaption>
-                                        <h3>Safari</h3>
-                                        <span>Jacob Cummings</span>
-                                        <a href="http://dribbble.com/shots/1116775-Safari">Take a look</a>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <ul class="grid cs-style-4">
-                            <li>
-                                <figure>
-                                    <div><img src="images/1.png" alt="img04" /></div>
-                                    <figcaption>
-                                        <h3>Safari</h3>
-                                        <span>Jacob Cummings</span>
-                                        <span>Jacob Cummings</span>
-                                        <a href="http://dribbble.com/shots/1116775-Safari">Take a look</a>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <ul class="grid cs-style-4">
-                            <li>
-                                <figure>
-                                    <div><img src="images/6.png" alt="img04" /></div>
-                                    <figcaption>
-                                        <h3>Safari</h3>
-                                        <span>Jacob Cummings</span>
-                                        <a href="http://dribbble.com/shots/1116775-Safari">Take a look</a>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <ul class="grid cs-style-4">
-                            <li>
-                                <figure>
-                                    <div><img src="images/5.png" alt="img04" /></div>
-                                    <figcaption>
-                                        <h3>Safari</h3>
-                                        <span>Jacob Cummings</span>
-                                        <a href="http://dribbble.com/shots/1116775-Safari">Take a look</a>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <ul class="grid cs-style-4">
-                            <li>
-                                <figure>
-                                    <div><img src="images/1.png" alt="img04" /></div>
-                                    <figcaption>
-                                        <h3>Safari</h3>
-                                        <span>Jacob Cummings</span>
-                                        <span>Jacob Cummings</span>
-                                        <a href="http://dribbble.com/shots/1116775-Safari">Take a look</a>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <ul class="grid cs-style-4">
-                            <li>
-                                <figure>
-                                    <div><img src="images/6.png" alt="img04" /></div>
-                                    <figcaption>
-                                        <h3>Safari</h3>
-                                        <span>Jacob Cummings</span>
-                                        <a href="http://dribbble.com/shots/1116775-Safari">Take a look</a>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <ul class="grid cs-style-4">
-                            <li>
-                                <figure>
-                                    <div><img src="images/5.png" alt="img04" /></div>
-                                    <figcaption>
-                                        <h3>Safari</h3>
-                                        <span>Jacob Cummings</span>
-                                        <a href="http://dribbble.com/shots/1116775-Safari">Take a look</a>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>*@
+                                   
                 </div>
                 <!-- begin:pagination -->
                 <div class="row">
@@ -207,7 +86,7 @@
                     </div>
 
 
-                    <asp:Textbox runat="server" ID="amount" ReadOnly="true" style="border:0; color:#912C96; font-weight:bold;"></asp:Textbox>
+                   <input type="text" ID="amount" readonly style="border:0; color:#912C96; font-weight:bold;">
                     <div id="slider-range"></div>
                 </div>
                 <!-- break -->
@@ -260,13 +139,17 @@
             max: 500000,
             values: [1000, 1000],
             slide: function (event, ui) {
-                $("#BodyContent_amount").val("PKR" + ui.values[0] + " - PKR" + ui.values[1]);
+                $("#amount").val("PKR" + ui.values[0] + " - PKR" + ui.values[1]);
             }
         });
-        $("#BodyContent_amount").val("PKR" + $("#slider-range").slider("values", 0) +
+        $("#amount").val("PKR" + $("#slider-range").slider("values", 0) +
           " - PKR" + $("#slider-range").slider("values", 1));
     });
-</script>
+
+   
+ 
+    </script>
+
 
 
 

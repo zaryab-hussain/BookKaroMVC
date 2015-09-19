@@ -235,46 +235,42 @@
             <!-- end:article -->
             <!-- begin:sidebar -->
             <div class="col-md-3 col-md-pull-9 sidebar">
-                <div class="widget-white favorite">
-                    <a href="#"><i class="fa fa-heart"></i> Add to favorite</a>
-                </div>
-                <!-- break -->
                 <div class="widget widget-sidebar widget-white">
                     <div class="widget-header">
-                        <h3>Recent Property</h3>
+                        <h3>Price Range</h3>
                     </div>
-                    <ul>
-                        <li><a href="#">Luxury Villa</a></li>
-                        <li><a href="#">Land In Central Park</a></li>
-                        <li><a href="#">The Urban Life</a></li>
-                        <li><a href="#">Luxury Office</a></li>
-                        <li><a href="">Luxury Villa In Rego Park</a></li>
-                    </ul>
+
+
+                    <asp:Textbox runat="server" ID="amount" ReadOnly="true" style="border:0; color:#912C96; font-weight:bold;"></asp:Textbox>
+                    <div id="slider-range"></div>
                 </div>
                 <!-- break -->
                 <div class="widget widget-sidebar widget-white">
                     <div class="widget-header">
-                        <h3>Property Type</h3>
+                        <h3>Services</h3>
                     </div>
                     <ul class="list-check">
-                        <li><a href="#">Office</a>&nbsp;(18)</li>
-                        <li><a href="#">Office</a>&nbsp;(43)</li>
-                        <li><a href="#">Shop</a>&nbsp;(31)</li>
-                        <li><a href="#">Villa</a>&nbsp;(52)</li>
-                        <li><a href="#">Apartment</a>&nbsp;(8)</li>
-                        <li><a href="#">Single Family Home</a>&nbsp;(11)</li>
+                        <li><a href="#">Place</a>&nbsp;(18)</li>
+                        <li><a href="#">Photography</a>&nbsp;(43)</li>
+                        <li><a href="#">Catering</a>&nbsp;(31)</li>
+                        <li><a href="#">Food</a>&nbsp;(52)</li>
+                        <li><a href="#">Beauty Saloon</a>&nbsp;(8)</li>
                     </ul>
                 </div>
                 <!-- break -->
                 <div class="widget widget-sidebar widget-white">
                     <div class="widget-header">
-                        <h3>Top Agents</h3>
+                        <h3>Location</h3>
                     </div>
                     <ul>
-                        <li><a href="#">John Doe</a></li>
-                        <li><a href="#">Christoper Drew</a></li>
-                        <li><a href="#">Jane Doe</a></li>
-                        <li><a href="#">Jeny</a></li>
+                        <li><a href="#">Gulshan Town</a></li>
+                        <li><a href="#">Defence/Clifton</a></li>
+                        <li><a href="#">Shahra-e-Faisal</a></li>
+                        <li><a href="#">North Nazimabad</a></li>
+                        <li><a href="#">North Karachi</a></li>
+                        <li><a href="#">Kashmir Road</a></li>
+
+
                     </ul>
                 </div>
                 <!-- break -->
@@ -284,3 +280,18 @@
         </div>
     </div>
 </div>
+<script>
+    $(function ($) {
+        $("#slider-range").slider({
+            range: true,
+            min: 1000,
+            max: 500000,
+            values: [1000, 1000],
+            slide: function (event, ui) {
+                $("#BodyContent_amount").val("PKR" + ui.values[0] + " - PKR" + ui.values[1]);
+            }
+        });
+        $("#BodyContent_amount").val("PKR" + $("#slider-range").slider("values", 0) +
+          " - PKR" + $("#slider-range").slider("values", 1));
+    });
+</script>

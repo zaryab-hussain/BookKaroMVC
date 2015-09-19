@@ -117,7 +117,7 @@ namespace BookKaroMVC.Controllers
                                  join Category in db.tblCategories on vendorCategory.CategoryID equals Category.CategoryID
                                  join a in db.tblAreas on v.AreaCode equals a.AreaCode
                                  where a.AreaCode == AreaCode && Category.CategoryID == EventCode
-                                 select new SearchResultsViewModel() { CategoryName = Category.CategoryName, VendorName = v.VendorName, PriceRangeMinimum = v.VendorPriceRangeMinimum, AreaName = a.AreaDescription, CapacityMinimum = v.VendorCapacityMinimum,  CapacityMaximum = v.VendorCapacityMaximum, PriceRangeMaximum = v.VendorPriceRangeMaximum,ImageSource = v.VendorImageSource });
+                                 select new SearchResultsViewModel() { CategoryName = Category.CategoryName, VendorName = v.VendorName, PriceRangeMinimum = v.VendorPriceRangeMinimum, AreaName = a.AreaDescription, CapacityMinimum = v.VendorCapacityMinimum,  CapacityMaximum = v.VendorCapacityMaximum, PriceRangeMaximum = v.VendorPriceRangeMaximum,ImageSource = v.VendorImageSource , VendorID = v.VendorID});
 
 
 
@@ -155,8 +155,8 @@ namespace BookKaroMVC.Controllers
                                    VendorCapacityMaximum = vendor.VendorCapacityMaximum,
                                    VendorDescription = vendor.VendorDescription,
                                    Area = a.AreaDescription,
-                                   VendorAddress = vendor.VendorAddress
-
+                                   VendorAddress = vendor.VendorAddress,
+                                   
 
 
                                }).SingleOrDefault();

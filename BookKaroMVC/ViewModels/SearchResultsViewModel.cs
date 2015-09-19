@@ -7,6 +7,8 @@ namespace BookKaroMVC.ViewModels
 {
     public class SearchResultsViewModel
     {
+        public int VendorID { get; set; }
+
         public string CategoryName { get; set; }
 
         public string VendorName { get; set; }
