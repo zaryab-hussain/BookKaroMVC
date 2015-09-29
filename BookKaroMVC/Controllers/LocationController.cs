@@ -67,7 +67,6 @@ namespace BookKaroMVC.Controllers
             try
             {
                 // TODO: Add update logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -198,7 +197,7 @@ namespace BookKaroMVC.Controllers
             objVendorDetail = (from vendor in db.tblVendors
 
                                from vendorCategory in vendor.tblCategories
-                               join category in db.tblCategories.DefaultIfEmpty() on vendorCategory.CategoryID equals category.CategoryID
+                               join category in db.tblCategories on vendorCategory.CategoryID equals category.CategoryID
                                join a in db.tblAreas on vendor.AreaCode equals a.AreaCode
 
                                //join i in db.tblImages on v.VendorID equals i.VendorID
@@ -228,11 +227,11 @@ namespace BookKaroMVC.Controllers
             List<string> Facilites = (from vendor in db.tblVendors
 
                                       from vendorFacility in vendor.tblFacilities
-                                      join facility in db.tblFacilities on vendorFacility.FacilityID equals facility.FacilityID
-
+                                      join facility in db.tblFacilities on vendorFacility.FacilityID equals facility.FacilityID into  ps
+                                      from facility in ps.DefaultIfEmpty()
                                       where vendor.VendorID == VendorCode
 
-                                      select facility.FacilityName).ToList();
+                                      select (facility == null) ? "No Facilities" : facility.FacilityName).ToList();
 
             objVendorDetail.Facility = Facilites;
             objVendorDetail.VendorImageSource = ImageSources;
