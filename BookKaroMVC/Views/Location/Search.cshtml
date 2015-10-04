@@ -12,7 +12,7 @@
 
 <script src="@Url.Content("~/Content/Scripts/jquery-ui.js")"></script>
 <script src="@Url.Content("~/Content/Scripts/modernizr.custom.js")" ></script>
-
+ 
 @using (Html.BeginForm("Search", "Location", FormMethod.Get))
 {
 <!-- begin:header -->
@@ -92,9 +92,9 @@
                     </div>
 
                     <label>Pkr</label>
-                   <input type="text" ID="amountMin" readonly style="border: 0; color: #912C96; font-weight: bold; border: 0; color: #912C96; font-weight: bold; width: 104px; display: inline; ">
+                   <input type="text" ID="amountMin" readonly style="border: 0; color: #912C96; font-weight: bold; border: 0; color: #912C96; font-weight: bold; width: 60px; display: inline; ">
                     <label> - Pkr</label>
-                    <input type="text" id="amountMax" readonly style="border: 0; color: #912C96; font-weight: bold; border: 0; color: #912C96; font-weight: bold; width: 104px; display: inline; ">
+                    <input type="text" id="amountMax" readonly style="border: 0; color: #912C96; font-weight: bold; border: 0; color: #912C96; font-weight: bold; width: 60px; display: inline; ">
                     <div id="slider-range"></div>
                 </div>
                 <!-- break -->
@@ -147,19 +147,25 @@
     $(function ($) {
         $("#slider-range").slider({
             range: true,
-            min: 1000,
-            max: 500000,
-            values: [1000, 1000],
+            min: 500,
+            max: 5000,
+            values: [500, 5000],
             slide: function (event, ui) {
                 $("#amountMin").val(+ ui.values[0]);
 
                 $("#amountMax").val( + ui.values[1]);
-                var pathname = window.location.pathname;
+                var pathname = window.location.href;
                 var amountMin = $("#amountMin").val();
                 var amountMax = $("#amountMax").val();
+                var AreaCode = '@ViewBag.AreaCode';
+                var EventCode = '@ViewBag.EventCode';
+                var NoOfGuests = '@ViewBag.NoOfGuests';
+                var Date = '@ViewBag.DateOfBooking';
+                var url = "/Location/Search/?" + "Date=" + Date +"&Areas=" + AreaCode + "&Events=" + EventCode + "&Guest=" + NoOfGuests + "&Min=" + amountMin + "&Max=" + amountMax;
+                setTimeout(function () { window.location = url; }, 2000);
+                //setTimeout(alert('test'), 5000);
 
-                var url = pathname;
-
+                //window.location = url;
                 //$.ajax({
                 //    url: pathname, // script url to send
                 //    method: 'GET', // method of sending
@@ -176,10 +182,12 @@
                 //$.get(pathname, { amountMin: amountMin, amountMax: amountMax },function(data) {
                 //    $('#test').html(data);
                 //});
+
+
             }
         });
         $("#amountMin").val($("#slider-range").slider("values", 0));
-        $("#amountMax").val($("#slider-range").slider("values", 1));  
+        $("#amountMax").val($("#slider-range").slider("values", 1));
     });
 
 
@@ -194,7 +202,7 @@
         })
 
     });
- 
+
     </script>
 
 

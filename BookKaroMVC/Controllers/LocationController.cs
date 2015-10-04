@@ -129,7 +129,7 @@ namespace BookKaroMVC.Controllers
 
 
         [HttpGet]
-        public ViewResult Search(string Date, string Areas, string Events, string Guests, string amountMin, string amountMax, string serviceType)
+        public ViewResult Search(string Date, string Areas, string Events, string Guests, string Min, string Max)
         {
             //var SearchCriteria = new HomeViewModel();
             //SearchCriteria.LocationID = ;
@@ -138,17 +138,22 @@ namespace BookKaroMVC.Controllers
             int AreaCode = (string.Equals(Areas, "")) ? 0 : Convert.ToInt32(Areas);
             int EventCode = (string.Equals(Events, "")) ? 0 : Convert.ToInt32(Events);
             int NoOfGuests = (string.Equals(Guests, "")) ? 0 : Convert.ToInt32(Guests);
+            int minAmount = (string.Equals(Guests, "")) ? 0 : Convert.ToInt32(Min);
+            int maxAmount = (string.Equals(Guests, "")) ? 0 : Convert.ToInt32(Max);
             ViewBag.NoOfGuest = NoOfGuests;
-            int serviceCode = Convert.ToInt32(serviceType);
-            ViewBag.Service = serviceCode;
-
-            if (serviceType == null)
+            //int serviceCode = Convert.ToInt32(serviceType);
+            ViewBag.AreaCode = AreaCode;
+            ViewBag.EventCode = EventCode;
+            ViewBag.NoOfGuests = NoOfGuests;
+            ViewBag.DateOfBooking = Date;
+            if (string.IsNullOrEmpty(Min) || string.IsNullOrEmpty(Max))
             {
                 var SearchResults = (from v in db.tblVendors
                                      from vendorCategory in v.tblCategories
                                      join Category in db.tblCategories on vendorCategory.CategoryID equals Category.CategoryID
                                      join a in db.tblAreas on v.AreaCode equals a.AreaCode
-                                     where a.AreaCode == AreaCode && Category.CategoryID == EventCode
+                                     where a.AreaCode == AreaCode && Category.CategoryID == EventCode 
+
                                      select new SearchResultsViewModel()
                                      {
                                          CategoryName = Category.CategoryName,
@@ -165,20 +170,42 @@ namespace BookKaroMVC.Controllers
             }
             else
             {
+                //var SearchResults = (from v in db.tblVendors
+                //                     from vendorService in v.tblServices
+                //                     join service in db.tblServices on vendorService.ServiceID equals service.ServiceID
+                //                     where service.ServiceID == serviceCode
+                //                     select new SearchResultsViewModel()
+                //                     {
+                //                         VendorName = v.VendorName,
+                //                         PriceRangeMinimum = v.VendorPriceRangeMinimum,
+                //                         PriceRangeMaximum = v.VendorPriceRangeMaximum,
+                //                         ImageSource = v.VendorImageSource,
+                //                         VendorID = v.VendorID
+
+                //                     });
+                //return View(SearchResults);
+
                 var SearchResults = (from v in db.tblVendors
-                                     from vendorService in v.tblServices
-                                     join service in db.tblServices on vendorService.ServiceID equals service.ServiceID
-                                     where service.ServiceID == serviceCode
+                                     from vendorCategory in v.tblCategories
+                                     join Category in db.tblCategories on vendorCategory.CategoryID equals Category.CategoryID
+                                     join a in db.tblAreas on v.AreaCode equals a.AreaCode
+                                     where a.AreaCode == AreaCode && Category.CategoryID == EventCode && (minAmount <= v.VendorPriceRangeMinimum && maxAmount >= v.VendorPriceRangeMaximum)
+
                                      select new SearchResultsViewModel()
                                      {
+                                         CategoryName = Category.CategoryName,
                                          VendorName = v.VendorName,
-                                         PriceRangeMinimum = v.VendorPriceRangeMinimum,                                       
+                                         PriceRangeMinimum = v.VendorPriceRangeMinimum,
+                                         AreaName = a.AreaDescription,
+                                         CapacityMinimum = v.VendorCapacityMinimum,
+                                         CapacityMaximum = v.VendorCapacityMaximum,
                                          PriceRangeMaximum = v.VendorPriceRangeMaximum,
                                          ImageSource = v.VendorImageSource,
                                          VendorID = v.VendorID
-
                                      });
+
                 return View(SearchResults);
+
             }
 
 

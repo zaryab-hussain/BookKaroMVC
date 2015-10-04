@@ -13,9 +13,9 @@ namespace BookKaroMVC.ViewModels
 
         public string VendorName { get; set; }
 
-        public string PriceRangeMinimum { get; set; }
+        public int PriceRangeMinimum { get; set; }
 
-        public string PriceRangeMaximum { get; set; }
+        public int PriceRangeMaximum { get; set; }
 
         public string AreaName { get; set; }
 

@@ -9,9 +9,9 @@ namespace BookKaroMVC.ViewModels
     {
         public int VendorID { get; set; }
         public string VendorName { get; set; }
-        public string VendorPriceRangeMinimum { get; set; }
+        public int VendorPriceRangeMinimum { get; set; }
         public string VendorCapacityMinimum { get; set; }
-        public string VendorPriceRangeMaximum { get; set; }
+        public int VendorPriceRangeMaximum { get; set; }
         public int MembershipDescription { get; set; }
         public string VendorAddress { get; set; }
         public string VendorCapacityMaximum { get; set; }

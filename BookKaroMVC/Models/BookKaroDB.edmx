@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BookKaroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BookKaroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -175,13 +175,13 @@
           </Key>
           <Property Name="VendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VendorName" Type="varchar" MaxLength="50" />
-          <Property Name="VendorPriceRangeMinimum" Type="varchar" MaxLength="50" />
+          <Property Name="VendorPriceRangeMinimum" Type="int" StoreGeneratedPattern="None" />
           <Property Name="VendorCapacityMinimum" Type="varchar" MaxLength="50" />
           <Property Name="VendorEnteredOn" Type="varchar" MaxLength="50" />
           <Property Name="VendorEnteredBy" Type="varchar" MaxLength="50" />
           <Property Name="VendorUpdatedOn" Type="varchar" MaxLength="50" />
           <Property Name="VendorUpdatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="VendorPriceRangeMaximum" Type="varchar" MaxLength="50" />
+          <Property Name="VendorPriceRangeMaximum" Type="int" StoreGeneratedPattern="None" />
           <Property Name="MembershipID" Type="int" Nullable="false" />
           <Property Name="VendorAddress" Type="varchar" MaxLength="50" />
           <Property Name="VendorCapacityMaximum" Type="varchar" MaxLength="50" />
@@ -748,13 +748,13 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorService' does not have a pri
           </Key>
           <Property Name="VendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VendorPriceRangeMinimum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorPriceRangeMinimum" Type="Int32" />
           <Property Name="VendorCapacityMinimum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VendorEnteredOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VendorEnteredBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VendorUpdatedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VendorUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VendorPriceRangeMaximum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorPriceRangeMaximum" Type="Int32" />
           <Property Name="MembershipID" Type="Int32" Nullable="false" />
           <Property Name="VendorAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VendorCapacityMaximum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1157,15 +1157,15 @@ warning 6002: The table/view 'BookKaro.dbo.tblVendorService' does not have a pri
           <EntitySetMapping Name="tblVendors">
             <EntityTypeMapping TypeName="BookKaroModel.tblVendor">
               <MappingFragment StoreEntitySet="tblVendor">
+                <ScalarProperty Name="VendorPriceRangeMinimum" ColumnName="VendorPriceRangeMinimum" />
+                <ScalarProperty Name="VendorPriceRangeMaximum" ColumnName="VendorPriceRangeMaximum" />
                 <ScalarProperty Name="VendorID" ColumnName="VendorID" />
                 <ScalarProperty Name="VendorName" ColumnName="VendorName" />
-                <ScalarProperty Name="VendorPriceRangeMinimum" ColumnName="VendorPriceRangeMinimum" />
                 <ScalarProperty Name="VendorCapacityMinimum" ColumnName="VendorCapacityMinimum" />
                 <ScalarProperty Name="VendorEnteredOn" ColumnName="VendorEnteredOn" />
                 <ScalarProperty Name="VendorEnteredBy" ColumnName="VendorEnteredBy" />
                 <ScalarProperty Name="VendorUpdatedOn" ColumnName="VendorUpdatedOn" />
                 <ScalarProperty Name="VendorUpdatedBy" ColumnName="VendorUpdatedBy" />
-                <ScalarProperty Name="VendorPriceRangeMaximum" ColumnName="VendorPriceRangeMaximum" />
                 <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
                 <ScalarProperty Name="VendorAddress" ColumnName="VendorAddress" />
                 <ScalarProperty Name="VendorCapacityMaximum" ColumnName="VendorCapacityMaximum" />
