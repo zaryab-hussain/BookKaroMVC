@@ -171,12 +171,12 @@ namespace BookKaroMVC.Controllers
                                      where service.ServiceID == serviceCode
                                      select new SearchResultsViewModel()
                                      {
-                                        
                                          VendorName = v.VendorName,
                                          PriceRangeMinimum = v.VendorPriceRangeMinimum,                                       
                                          PriceRangeMaximum = v.VendorPriceRangeMaximum,
                                          ImageSource = v.VendorImageSource,
                                          VendorID = v.VendorID
+
                                      });
                 return View(SearchResults);
             }

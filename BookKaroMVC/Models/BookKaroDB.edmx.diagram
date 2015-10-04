@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="373d45c9e8884e56b1debe431d7176b8" Name="Diagram1" ZoomLevel="64">
+      <Diagram DiagramId="373d45c9e8884e56b1debe431d7176b8" Name="Diagram1" ZoomLevel="59">
         <EntityTypeShape EntityType="BookKaroModel.sysdiagram" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BookKaroModel.tblArea" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BookKaroModel.tblBookingItem" Width="1.5" PointX="10.5" PointY="4.625" IsExpanded="true" />

@@ -1,0 +1,200 @@
+﻿
+@model IEnumerable<BookKaroMVC.ViewModels.SearchResultsViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Styles/default.css")" />
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Styles/component.css")" />
+@*<link rel="stylesheet" href="@Url.Content("//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css")" />*@
+
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Styles/jquery-ui.css")" />
+
+<script src="@Url.Content("~/Content/Scripts/jquery-ui.js")"></script>
+<script src="@Url.Content("~/Content/Scripts/modernizr.custom.js")"></script>
+
+@using (Html.BeginForm("Search", "Location", FormMethod.Get))
+{
+    <!-- begin:header -->
+    <div id="header" class="heading" style="background-image: url(img/img01.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-sm-12">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end:header -->
+    <!-- begin:content -->
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <!-- begin:article -->
+                <div class="col-md-9 col-md-push-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-title heading-title-alt">
+                                <h3>Plan Your Event</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- begin:product -->
+                    <div class="row container-realestate">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <ul class="grid cs-style-4">
+                                    <li>
+                                        <figure>
+                                            <div><img src="@Url.Content("~/Content/Images/Photographers/" + item.ImageSource)" alt="" /></div>
+                                            <figcaption>
+                                                <h5>@Html.DisplayFor(modelItem => item.VendorName)</h5>
+                                                <span><i class="fa fa-money"></i>@Html.DisplayFor(modelItem => item.PriceRangeMinimum)</span><br />
+                                               <span><i class="fa fa-map-marker"></i> @Html.DisplayFor(modelItem => item.AreaName)</span>
+                                                @Html.ActionLink("Detail", "Detail", "Photographer", new { id = item.VendorID }, null)
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+
+                    </div>
+                    <!-- begin:pagination -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="pagination">
+                                <li class="disabled"><a href="#">&laquo;</a></li>
+                                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end:pagination -->
+                </div>
+
+
+                <!-- end:article -->
+                <!-- begin:sidebar -->
+                <div class="col-md-3 col-md-pull-9 sidebar">
+                    <div class="widget widget-sidebar widget-white">
+                        <div class="widget-header">
+                            <h3>Price Range</h3>
+                        </div>
+
+                        <label>Pkr</label>
+                        <input type="text" ID="amountMin" readonly style="border: 0; color: #912C96; font-weight: bold; border: 0; color: #912C96; font-weight: bold; width: 104px; display: inline; ">
+                        <label> - Pkr</label>
+                        <input type="text" id="amountMax" readonly style="border: 0; color: #912C96; font-weight: bold; border: 0; color: #912C96; font-weight: bold; width: 104px; display: inline; ">
+                        <div id="slider-range"></div>
+                    </div>
+                    <!-- break -->
+                    <div class="widget widget-sidebar widget-white">
+                        <div class="widget-header">
+                            <h3>Services</h3>
+                        </div>
+                        <ul class="list-check">
+                            <li><a href="http://localhost:2870/Location/Search?Date=01%2F01%2F0001+12%3A00+AM&Areas=1&Events=1&Guests=@ViewBag.NoOfGuest&serviceType=1">Photography</a>&nbsp;(43)</li>
+                            <li><a href="#">Place</a>&nbsp;(18)</li>
+                            <li><a href="#">Catering</a>&nbsp;(31)</li>
+                            <li><a href="#">Food</a>&nbsp;(52)</li>
+                            <li><a href="#">Beauty Saloon</a>&nbsp;(8)</li>
+                        </ul>
+                    </div>
+                    <!-- break -->
+                    <div class="widget widget-sidebar widget-white">
+                        <div class="widget-header">
+                            <h3>Location</h3>
+                        </div>
+                        <ul>
+                            <li><a href="#">Gulshan Town</a></li>
+                            <li><a href="http://localhost:2870/Location/Search?Date=01%2F01%2F0001+12%3A00+AM&Areas=1&Events=1&Guests=@ViewBag.NoOfGuest">Defence/Clifton</a></li>
+                            <li><a href="#">Shahra-e-Faisal</a></li>
+                            <li><a href="#">North Nazimabad</a></li>
+                            <li><a href="#">North Karachi</a></li>
+                            <li><a href="#">Kashmir Road</a></li>
+
+
+                        </ul>
+                    </div>
+                    <!-- break -->
+                </div>
+                <!-- end:sidebar -->
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="test">
+    </div>
+}
+<!-- end:content -->
+
+
+
+<script>
+    $(function ($) {
+        $("#slider-range").slider({
+            range: true,
+            min: 1000,
+            max: 500000,
+            values: [1000, 1000],
+            slide: function (event, ui) {
+                $("#amountMin").val(+ ui.values[0]);
+
+                $("#amountMax").val( + ui.values[1]);
+                var pathname = window.location.pathname;
+                var amountMin = $("#amountMin").val();
+                var amountMax = $("#amountMax").val();
+
+                var url = pathname;
+
+                //$.ajax({
+                //    url: pathname, // script url to send
+                //    method: 'GET', // method of sending
+                //    data: $('form').has(this).serialize(),  // .serialize() make query string with form inputs name and value
+                //    dataType: 'json',  // expected data format returned from server, you may have something else
+                //    success: function (response) {
+                //        // response contains data returned from server
+                //    }
+                //});
+                //$.get(pathname),{amountMin : amountMin, amountMax : amountMax}, function (data) {
+                //    alert("Data: " + data + "\nStatus: " + status);
+                //});
+
+                //$.get(pathname, { amountMin: amountMin, amountMax: amountMax },function(data) {
+                //    $('#test').html(data);
+                //});
+            }
+        });
+        $("#amountMin").val($("#slider-range").slider("values", 0));
+        $("#amountMax").val($("#slider-range").slider("values", 1));
+    });
+
+
+    $("#Product_ID").on('change', function () {
+
+        var url = window.location.pathname;;
+        var id = $(this).val();
+        $.get(url, { id: id }, function (data) {
+            $("#Price").val(data);
+            $("#Total").val(data);
+
+        })
+
+    });
+
+</script>
+
+
+
+
