@@ -3,6 +3,10 @@
     ViewBag.Title = "Detail";
 }
 
+<script type="text/javascript" src="@Url.Content("~/Content/Scripts/moment.js")"></script>
+
+<script type="text/javascript" src="@Url.Content("~/Content/Scripts/bootstrap-datetimepicker.js")"></script>
+
 <h2>Detail</h2>
 
 
@@ -23,6 +27,11 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h2>@Html.DisplayFor(modelItem => modelItem.VendorName)</h2>
+                                        <div id="checkbuttons">
+                                             <span><a class="checkout btn btn-success btn-lg" href="#">Add to list</a></span>
+                                            <span><a class=" checkout btn btn-success btn-lg" href="modal-signin" data-toggle="modal" data-target="#modal-signin" onclick="return signin()">Proceed To Checkout</a></span>
+
+                                        </div>
                                         <div id="slider-property" class="carousel slide" data-ride="carousel">
                                             <ol class="carousel-indicators">
 
@@ -280,18 +289,64 @@
         </div>
     </div>
 </div>
-<script>
+<!-- begin:modal-signin -->
+<div class="modal fade" id="modal-signin" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="LinkButton1" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Enter Your Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label id="Label1">Name</label>
+                    <input type="text" id="SigninMail" class="form-control input-lg" placeholder="Enter Your Name">
+                </div>
+                <div class="form-group">
+                    <label id="Label2">Contact Number</label>
+                    <input type="text" id="SigninPass"  class="form-control input-lg" placeholder="Enter Your Number">
+                </div>
+                <div class="form-group">
+                    <label id="Label3">Comment</label>
+                    <input type="text" id="SigninPass" class="form-control input-lg" placeholder="Password">
+                </div>
+                <label for="Date">Date</label>
+
+                <div class="input-group date" id="datetimepicker1">
+                    @Html.TextBox("Date", null, new { @class = "form-control", name = "Date" })
+
+
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-success btn-block btn-lg" value="CheckOut">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end:modal-signin -->
+<script type="text/javascript">
     $(function ($) {
-        $("#slider-range").slider({
-            range: true,
-            min: 1000,
-            max: 500000,
-            values: [1000, 1000],
-            slide: function (event, ui) {
-                $("#BodyContent_amount").val("PKR" + ui.values[0] + " - PKR" + ui.values[1]);
-            }
+        $('#datetimepicker1').datetimepicker({
+            format: 'DD-MM-YYYY'
         });
-        $("#BodyContent_amount").val("PKR" + $("#slider-range").slider("values", 0) +
-          " - PKR" + $("#slider-range").slider("values", 1));
     });
+      </script>
+    <script>
+        $(function ($) {
+            $("#slider-range").slider({
+                range: true,
+                min: 1000,
+                max: 500000,
+                values: [1000, 1000],
+                slide: function (event, ui) {
+                    $("#BodyContent_amount").val("PKR" + ui.values[0] + " - PKR" + ui.values[1]);
+                }
+            });
+            $("#BodyContent_amount").val("PKR" + $("#slider-range").slider("values", 0) +
+              " - PKR" + $("#slider-range").slider("values", 1));
+        });
 </script>
