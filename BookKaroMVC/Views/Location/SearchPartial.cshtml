@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BookKaroMVC.ViewModels.SearchResultsViewModel>
+
+<div class="row container-realestate">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="grid cs-style-4">
+                <li>
+                    <figure>
+                        <div><img src="@Url.Content("~/Content/Images/" + item.ImageSource)" alt="" /></div>
+                        <figcaption>
+                            <h5>@Html.DisplayFor(modelItem => item.VendorName)</h5>
+                            <span><i class="fa fa-money"></i>@Html.DisplayFor(modelItem => item.PriceRangeMinimum) - @Html.DisplayFor(modelItem => item.PriceRangeMaximum)</span><br />
+                            <span><i class="fa fa-users"></i>@Html.DisplayFor(modelItem => item.CapacityMinimum) - @Html.DisplayFor(modelItem => item.CapacityMaximum)</span><br />
+                            <span><i class="fa fa-map-marker"></i> @Html.DisplayFor(modelItem => item.AreaName)</span>
+                            @Html.ActionLink("Detail", "Detail", "Location", new { id = item.VendorID }, null)
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </div>
+    }
+
+</div>
+
+

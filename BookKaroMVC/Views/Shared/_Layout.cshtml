@@ -166,11 +166,11 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <asp:Label ID="Label1" >Email address</asp:Label>
-                            <asp:TextBox ID="SigninMail" TextMode="Email"  class="form-control input-lg" placeholder="Enter email"></asp:TextBox>
+                            @Html.TextBox("SigninMail", "", new { @class = "form-control input-lg", type = "email", placeholder = "e-mail address" })                   
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label2" >Password</asp:Label>
-                            <asp:TextBox ID="SigninPass"  TextMode="Password" class="form-control input-lg" placeholder="Password"></asp:TextBox>
+                            @Html.TextBox("SigninPass", "", new { @class = "form-control input-lg", type = "Password", placeholder = "Password" })                                       
                         </div>
                         <div class="checkbox">
                             <asp:Label ID="Label3" >
@@ -198,13 +198,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <asp:TextBox ID="Signupmail" TextMode="Email"  class="form-control input-lg" placeholder="Enter email"></asp:TextBox>
+                       @Html.TextBox("Signupmail", "", new { @class="form-control input-lg", type = "email", placeholder = "example@mail.ru" })  
                         </div>
                         <div class="form-group">
-                            <asp:TextBox ID="Signuppass"  TextMode="Password" class="form-control input-lg" placeholder="Password"></asp:TextBox>
+             @Html.TextBox("Signuppass", "", new { @class = "form-control input-lg", type = "password", placeholder = "Password" })       
                         </div>
                         <div class="form-group">
-                            <asp:TextBox ID="Signupcpass"  TextMode="Password" class="form-control input-lg" placeholder="Confirm Password"></asp:TextBox>
+                            @Html.TextBox("Signupcpass", "", new { @class = "form-control input-lg", type = "password", placeholder = "Password" })                    
                         </div>
                         <div class="checkbox">
 

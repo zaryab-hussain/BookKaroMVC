@@ -42,7 +42,7 @@
                 </div>
 
                 <!-- begin:product -->
-                <div class="row container-realestate">
+                <div class="row container-realestate" id="searchResults">
                     @foreach (var item in Model)
                     {
 
@@ -160,8 +160,24 @@
                 var AreaCode = '@ViewBag.AreaCode';
                 var EventCode = '@ViewBag.EventCode';
                 var NoOfGuests = '@ViewBag.NoOfGuests';
-                var Date = '@ViewBag.DateOfBooking';
-                var url = "/Location/Search/?" + "Date=" + Date +"&Areas=" + AreaCode + "&Events=" + EventCode + "&Guest=" + NoOfGuests + "&Min=" + amountMin + "&Max=" + amountMax;
+                var Date = '@ViewBag.DateOfBooking';             
+
+                var searchResults = $('#searchResults');
+
+                $.ajax({
+                    url: '@Url.Action("SearchPartial", "Location")',
+                    data: { Date: Date, Areas : AreaCode, Events : EventCode, Guest : NoOfGuests, Min : amountMin, Max : amountMax} /* add other additional parameters */ ,
+                    cache: false,
+                    type: "GET",
+                    dataType: "html",
+                    success: function (data) {
+                      
+                        //$("#dvCategoryResults").html(data);
+                        searchResults.html(data);
+                        
+                    }
+                });
+
                 setTimeout(function () { window.location = url; }, 2000);
                 //setTimeout(alert('test'), 5000);
 
